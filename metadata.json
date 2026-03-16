@@ -1,0 +1,5 @@
+{
+  "name": "CBT: Conceptual Blender",
+  "description": "A sophisticated cognitive tool that operationalizes Conceptual Blending Theory to synthesize novel ideas from disparate domains using the Gemini API.",
+  "requestFramePermissions": []
+}

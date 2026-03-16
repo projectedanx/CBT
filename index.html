@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CBT Architect</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom Scrollbar for Cyberpunk Feel */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a; 
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155; 
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569; 
+    }
+    body {
+      background-color: #020617; /* Slate 950 */
+      color: #e2e8f0;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    .neon-text {
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "rxjs": "https://esm.sh/rxjs@^7.8.2?conditions=es2015",
+    "rxjs/operators": "https://esm.sh/rxjs@^7.8.2/operators?conditions=es2015",
+    "rxjs/ajax": "https://esm.sh/rxjs@^7.8.2/ajax?conditions=es2015",
+    "rxjs/webSocket": "https://esm.sh/rxjs@^7.8.2/webSocket?conditions=es2015",
+    "rxjs/testing": "https://esm.sh/rxjs@^7.8.2/testing?conditions=es2015",
+    "rxjs/fetch": "https://esm.sh/rxjs@^7.8.2/fetch?conditions=es2015",
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0?external=rxjs",
+    "d3": "https://esm.sh/d3@^7.9.0?external=rxjs",
+    "@angular/forms": "https://esm.sh/@angular/forms@^21.0.8?external=rxjs",
+    "@angular/platform-browser": "https://esm.sh/@angular/platform-browser@^21.0.8?external=rxjs",
+    "@angular/common": "https://esm.sh/@angular/common@^21.0.8?external=rxjs",
+    "@angular/compiler": "https://esm.sh/@angular/compiler@^21.0.8?external=rxjs",
+    "@angular/core": "https://esm.sh/@angular/core@^21.0.8?external=rxjs"
+  }
+}
+</script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
