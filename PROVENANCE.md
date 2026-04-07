@@ -23,3 +23,7 @@ This application operates on the principles of the **Immune-Aware Petzold Loop**
 
 ---
 *Document sealed by Strategos.*
+
+---
+## Epistemic Checkpoint: The JSDoc Sealing
+In order to prevent structural decay, the codebase has been subjected to a strict JSDoc pass. This was not a mechanical exercise; it was the deliberate embedding of the CBT framework into the types and interfaces themselves. We encountered friction with Angular 21's strict peer constraints (forcing `--legacy-peer-deps`), proving that even the tooling resists non-standard architectures. The Sovereign Intent remains intact.

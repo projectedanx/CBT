@@ -5,6 +5,10 @@ import { GeminiService } from './services/gemini.service';
 import { ConceptGraphComponent } from './components/concept-graph.component';
 import { AppState, GenericSpaceResult, BlendResult, BlendedConcept, GraphData, ConceptNode, ConceptLink, HistoryItem } from './types';
 
+/**
+ * The sovereign controller of the Conceptual Blender architecture.
+ * Manages the Petzold Loop of ingestion, structural mapping, and dialectic synthesis.
+ */
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -12,30 +16,44 @@ import { AppState, GenericSpaceResult, BlendResult, BlendedConcept, GraphData, C
   templateUrl: './app.component.html'
 })
 export class AppComponent {
+  /** Reference to the cognitive engine handling external Gemini API synthesis. */
   private gemini = inject(GeminiService);
 
-  // State
+  /** Represents the current phase of the cognitive processing loop. */
   state = signal<AppState>('idle');
+  /** Form control representing the first input conceptual domain (Space Alpha). */
   conceptA = new FormControl('Mycelium Network', [Validators.required]);
+  /** Form control representing the second input conceptual domain (Space Beta). */
   conceptB = new FormControl('Corporate Hierarchy', [Validators.required]);
   
+  /** The specific cognitive strategy applied to force the convergence of disparate domains. */
   blendType = signal<'composition' | 'completion' | 'elaboration'>('composition');
   
-  // Hyperparameters
+  /** The thermodynamic variance applied to the generator. Higher means more entropy/novelty. */
   temperature = signal<number>(0.8);
+  /** The sampling restraint threshold governing token generation variance. */
   topK = signal<number>(40);
+  /** Flag to toggle visibility of advanced cognitive constraints. */
   showSettings = signal<boolean>(false);
   
+  /** Signal holding the extracted structural commonalities between domains. */
   genericSpace = signal<GenericSpaceResult | null>(null);
+  /** Signal holding the resulting conceptual artifacts from the blending phase. */
   blendResult = signal<BlendResult | null>(null);
+  /** Volatile signal capturing critical failures in the cognitive engine. */
   errorMessage = signal<string | null>(null);
+  /** Volatile signal providing transient feedback on ledger or mutation actions. */
   notification = signal<string | null>(null);
   
+  /** The local temporal archive storing previously generated operations. */
   history = signal<HistoryItem[]>([]);
+  /** Pointer to the specific historical artifact currently loaded into the context window. */
   currentHistoryItemId = signal<string | null>(null);
 
+  /**
+   * Bootstraps the primary controller and attempts to rehydrate the temporal archive from local storage.
+   */
   constructor() {
-    // Load history from local storage
     const saved = localStorage.getItem('cbt_history');
     if (saved) {
       try {
@@ -46,7 +64,10 @@ export class AppComponent {
     }
   }
 
-  // Computed Graph Data for Visualization
+  /**
+   * Computed topographical data structure consumed by the D3.js visualizer.
+   * Maps current signals (Input A, Input B, Generic Space, and Blends) into a linked force graph.
+   */
   graphData = computed<GraphData>(() => {
     const nodes: ConceptNode[] = [];
     const links: ConceptLink[] = [];
@@ -66,7 +87,6 @@ export class AppComponent {
     if (gs) {
       nodes.push({ id: 'g', label: 'Generic Space', type: 'generic', group: 3 });
       
-      // Add a few representative nodes for the structure
       gs.commonStructure.slice(0, 3).forEach((s, i) => {
         const id = `g-${i}`;
         nodes.push({ id, label: s, type: 'generic', group: 3 });
@@ -83,7 +103,6 @@ export class AppComponent {
         const id = `blend-${i}`;
         nodes.push({ id, label: b.name, type: 'blend', group: 4 });
         
-        // Connect blend to inputs
         links.push({ source: 'a', target: id, value: 2 });
         links.push({ source: 'b', target: id, value: 2 });
         if (gs) {
@@ -95,20 +114,36 @@ export class AppComponent {
     return { nodes, links };
   });
 
+  /**
+   * Toggles the UI overlay for adjusting generator constraints (temperature/topK).
+   */
   toggleSettings() {
     this.showSettings.update(v => !v);
   }
 
+  /**
+   * Intercepts DOM range input events to mutate the engine's temperature.
+   * @param {Event} event - The raw DOM input event.
+   */
   updateTemperature(event: Event) {
     const val = parseFloat((event.target as HTMLInputElement).value);
     this.temperature.set(val);
   }
 
+  /**
+   * Intercepts DOM range input events to mutate the engine's Top-K limit.
+   * @param {Event} event - The raw DOM input event.
+   */
   updateTopK(event: Event) {
     const val = parseInt((event.target as HTMLInputElement).value, 10);
     this.topK.set(val);
   }
 
+  /**
+   * Triggers the primary Petzold Loop. Begins Phase 1: Mapping the Generic Space.
+   * On successful structural extraction, automatically delegates to Phase 2 (Synthesis).
+   * @returns {Promise<void>}
+   */
   async startAnalysis() {
     if (this.conceptA.invalid || this.conceptB.invalid) return;
     
@@ -119,11 +154,9 @@ export class AppComponent {
     this.currentHistoryItemId.set(null);
 
     try {
-      // Step 1: Analyze Generic Space
       const resultA = await this.gemini.analyzeGenericSpace(this.conceptA.value!, this.conceptB.value!);
       this.genericSpace.set(resultA);
       
-      // Automatically proceed to blending
       await this.performBlend();
       
     } catch (e) {
@@ -133,12 +166,17 @@ export class AppComponent {
     }
   }
 
+  /**
+   * Executes Phase 2 of the loop: Conceptual Blend Synthesis based on the established Generic Space mapping.
+   * Archives the resultant operation to the temporal ledger on completion.
+   * @returns {Promise<void>}
+   */
   async performBlend() {
     const gs = this.genericSpace();
     if (!gs) return;
 
     this.state.set('blending');
-    const currentType = this.blendType(); // Capture type at start of request
+    const currentType = this.blendType();
 
     try {
       const resultB = await this.gemini.runConceptualBlend(
@@ -159,6 +197,10 @@ export class AppComponent {
     }
   }
 
+  /**
+   * Mutates the cognitive blending strategy directive. Re-triggers synthesis if a valid mapping exists.
+   * @param {'composition' | 'completion' | 'elaboration'} type - The newly selected cognitive focus.
+   */
   setBlendType(type: 'composition' | 'completion' | 'elaboration') {
     this.blendType.set(type);
     if (this.genericSpace()) {
@@ -166,6 +208,9 @@ export class AppComponent {
     }
   }
 
+  /**
+   * Purges the volatile active context window, returning the controller to an idle baseline.
+   */
   reset() {
     this.state.set('idle');
     this.genericSpace.set(null);
@@ -173,11 +218,14 @@ export class AppComponent {
     this.currentHistoryItemId.set(null);
   }
 
+  /**
+   * Promotes a specific generated artifact into a specialized, manually preserved historical record.
+   * @param {BlendedConcept} blend - The specific artifact to archive permanently.
+   */
   saveBlend(blend: BlendedConcept) {
     const gs = this.genericSpace();
     if (!gs) return;
 
-    // Create a specialized result containing only this blend
     const specificResult: BlendResult = {
       analysis: `Archived Artifact: ${blend.name}`,
       blends: [blend]
@@ -194,20 +242,21 @@ export class AppComponent {
       isManualSave: true
     };
 
-    // Add to top of history and persist
     this.history.update(h => [newItem, ...h].slice(0, 30));
     this.persistHistory();
 
-    // Trigger notification
     this.notification.set(`Artifact "${blend.name}" successfully archived.`);
     setTimeout(() => this.notification.set(null), 3000);
   }
 
+  /**
+   * Mutates the user-feedback tensor for a specific generated concept, updating both volatile memory and persistent history.
+   * @param {BlendedConcept} blend - The generated artifact receiving feedback.
+   * @param {'like' | 'dislike'} rating - The binary sentiment value.
+   */
   rateBlend(blend: BlendedConcept, rating: 'like' | 'dislike') {
-    // 1. Determine new rating (toggle logic)
     const newRating = blend.userRating === rating ? undefined : rating;
     
-    // 2. Update local blend object in the current result signal
     const currentResult = this.blendResult();
     if (currentResult) {
       const updatedBlends = currentResult.blends.map(b => 
@@ -216,12 +265,10 @@ export class AppComponent {
       this.blendResult.set({ ...currentResult, blends: updatedBlends });
     }
 
-    // 3. Update in history if we have a current history context
     const currentId = this.currentHistoryItemId();
     if (currentId) {
       this.history.update(items => items.map(item => {
         if (item.id === currentId) {
-          // Clone and update the specific blend within the history item
           const updatedBlends = item.blendResult.blends.map(b => 
             b.name === blend.name ? { ...b, userRating: newRating } : b
           );
@@ -239,6 +286,11 @@ export class AppComponent {
     }
   }
 
+  /**
+   * Recycles an emergent artifact into the primary input nodes, facilitating recursive iteration (Phase 2 capability).
+   * @param {string} name - The label of the generated artifact.
+   * @param {'A' | 'B'} target - The destination vector to inject the artifact.
+   */
   useAsInput(name: string, target: 'A' | 'B') {
     if (target === 'A') {
       this.conceptA.setValue(name);
@@ -246,14 +298,19 @@ export class AppComponent {
       this.conceptB.setValue(name);
     }
     
-    // Visual feedback
     this.notification.set(`Injecting Artifact "${name}" into Input ${target === 'A' ? 'Alpha' : 'Beta'}.`);
     setTimeout(() => this.notification.set(null), 3000);
     
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  /**
+   * Appends the output of a completed cognitive loop to the persistent temporal ledger.
+   *
+   * @param {BlendResult} result - The output payload containing the generated artifacts.
+   * @param {GenericSpaceResult} generic - The abstract topology linking the inputs.
+   * @param {'composition' | 'completion' | 'elaboration'} type - The methodological constraint used.
+   */
   private addToHistory(
     result: BlendResult, 
     generic: GenericSpaceResult, 
@@ -271,10 +328,14 @@ export class AppComponent {
     };
 
     this.currentHistoryItemId.set(id);
-    this.history.update(h => [newItem, ...h].slice(0, 30)); // Limit to 30
+    this.history.update(h => [newItem, ...h].slice(0, 30));
     this.persistHistory();
   }
 
+  /**
+   * Rehydrates a preserved historical record back into the active context window.
+   * @param {HistoryItem} item - The temporal ledger entry to load.
+   */
   loadHistory(item: HistoryItem) {
     this.state.set('complete'); 
     this.conceptA.setValue(item.conceptA);
@@ -285,12 +346,18 @@ export class AppComponent {
     this.currentHistoryItemId.set(item.id);
   }
 
+  /**
+   * Irreversibly purges the temporal ledger from local storage and volatile memory.
+   */
   clearHistory() {
     this.history.set([]);
     this.persistHistory();
     this.currentHistoryItemId.set(null);
   }
 
+  /**
+   * Flushes volatile ledger structures into static browser storage.
+   */
   private persistHistory() {
     localStorage.setItem('cbt_history', JSON.stringify(this.history()));
   }

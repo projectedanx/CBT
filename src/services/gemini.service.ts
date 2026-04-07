@@ -2,16 +2,32 @@ import { Injectable } from '@angular/core';
 import { GoogleGenAI, Type } from '@google/genai';
 import { GenericSpaceResult, BlendResult, BlendedConcept } from '../types';
 
+/**
+ * Service responsible for orchestrating Conceptual Blending Theory (CBT) operations via the Gemini API.
+ * Acts as the primary cognitive engine, extracting structural topologies and synthesizing novel conceptual artifacts.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class GeminiService {
+  /** The initialized Google GenAI client instance. */
   private ai: GoogleGenAI;
 
+  /**
+   * Initializes the GeminiService and configures the AI client with the provided environment API key.
+   */
   constructor() {
     this.ai = new GoogleGenAI({ apiKey: process.env['API_KEY'] || '' });
   }
 
+  /**
+   * Analyzes two disparate conceptual spaces to extract their underlying abstract structural commonalities (the Generic Space).
+   *
+   * @param {string} conceptA - The first input concept (Space Alpha).
+   * @param {string} conceptB - The second input concept (Space Beta).
+   * @returns {Promise<GenericSpaceResult>} A promise that resolves to the structural topology and similarity metric.
+   * @throws Will throw an error if the Gemini API request fails or the response cannot be parsed.
+   */
   async analyzeGenericSpace(conceptA: string, conceptB: string): Promise<GenericSpaceResult> {
     const model = 'gemini-2.5-flash';
     const prompt = `
@@ -66,6 +82,19 @@ export class GeminiService {
     }
   }
 
+  /**
+   * Executes a conceptual blend by projecting elements from the input spaces into a novel blended space,
+   * guided by the extracted generic topology and a specified methodological focus.
+   *
+   * @param {string} conceptA - The first input concept (Space Alpha).
+   * @param {string} conceptB - The second input concept (Space Beta).
+   * @param {GenericSpaceResult} genericSpace - The structural mapping previously extracted between the two inputs.
+   * @param {'composition' | 'completion' | 'elaboration'} focus - The specific cognitive operation to prioritize during the blend.
+   * @param {number} [temperature=0.8] - The thermodynamic variance parameter controlling output entropy/creativity (0.0 to 2.0).
+   * @param {number} [topK=40] - The sampling distribution limit, restricting the model to the top K most likely tokens.
+   * @returns {Promise<BlendResult>} A promise that resolves to the generated artifacts and the analytical methodology used.
+   * @throws Will throw an error if the synthesis generation fails.
+   */
   async runConceptualBlend(
     conceptA: string, 
     conceptB: string, 

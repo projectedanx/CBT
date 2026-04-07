@@ -2,12 +2,22 @@ import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild, View
 import * as d3 from 'd3';
 import { GraphData, ConceptNode, ConceptLink } from '../types';
 
-// Define types compatible with D3 Simulation
+/**
+ * Interface augmenting the base ConceptNode with required properties for D3's Force Simulation mechanics.
+ */
 interface SimulationNode extends ConceptNode, d3.SimulationNodeDatum {}
+
+/**
+ * Interface augmenting the base ConceptLink with required properties for D3's Force Simulation mechanics.
+ */
 interface SimulationLink extends d3.SimulationLinkDatum<SimulationNode> {
   value: number;
 }
 
+/**
+ * Visual topology component responsible for projecting the Conceptual Blending Theory geometry.
+ * Bridges declarative Angular data-binding with imperative D3 force-directed physics simulations.
+ */
 @Component({
   selector: 'app-concept-graph',
   standalone: true,
@@ -29,18 +39,31 @@ interface SimulationLink extends d3.SimulationLinkDatum<SimulationNode> {
   encapsulation: ViewEncapsulation.None
 })
 export class ConceptGraphComponent implements OnChanges {
+  /** The abstract conceptual topology provided by the cognitive engine. */
   @Input({ required: true }) data!: GraphData;
+  /** The structural DOM hook used to anchor the SVG simulation. */
   @ViewChild('graphContainer') container!: ElementRef;
 
+  /** The active D3 force simulation engine dictating node placement. */
   private simulation: d3.Simulation<SimulationNode, SimulationLink> | null = null;
+  /** The root SVG selection context. */
   private svg: any;
 
+  /**
+   * Intercepts declarative data mutations from the host environment to trigger imperative graph re-renders.
+   *
+   * @param {SimpleChanges} changes - The delta payload containing previous and current topological data.
+   */
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['data'] && this.data.nodes.length > 0) {
       this.renderGraph();
     }
   }
 
+  /**
+   * Teardown and reconstruction sequence for the D3 physics simulation.
+   * Establishes the force vectors, gravitational centers, and aesthetic mappings for the new topology.
+   */
   private renderGraph(): void {
     if (!this.container) return;
 
