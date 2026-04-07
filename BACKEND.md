@@ -65,7 +65,7 @@ References to blends created by the user, plus their specific context.
 }
 ```
 
-## 3. Cloud Functions (API Security)
+## 3. Cloud Functions (API Security) [UPDATE: Must respect JSDoc Types]
 Currently, the API Key is client-side. This is acceptable for a Sovereign Applet but insecure for production.
 
 **Function: `generateBlend`**
@@ -83,3 +83,7 @@ To allow users to find "Similar Blends":
 1.  On `blends.onCreate`, trigger a Cloud Function.
 2.  Generate an embedding for the `description` + `mechanics` using `text-embedding-004`.
 3.  Store in a dedicated Vector Store (e.g., Pinecone or Firestore Vector Search extension).
+
+---
+## Integration Note (Phase 1 Retrofit)
+As established in the Phase 1 hardening, all Firestore payloads MUST strictly adhere to the interfaces defined in `src/types.ts` (e.g., `GenericSpaceResult`, `BlendResult`). The epistemological intent documented there overrides standard CRUD operations.
