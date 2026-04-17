@@ -1,6 +1,6 @@
 # STRATEGIC TRAJECTORY // ROADMAP
 
-## Phase 1: Foundation (Current Status: COMPLETE - Stabilized via JSDoc ## Phase 1: Foundation (Current Status: ACTIVE) Epistemic Rigor)
+## Phase 1: Foundation (Current Status: COMPLETE - Stabilized via JSDoc Epistemic Rigor)
 - [x] **Core Blending Engine:** Integration of `gemini-2.5-flash` for CBT operations.
 - [x] **Visual Topology:** D3.js force-directed graph for concept relationships.
 - [x] **Local Persistence:** Browser-based storage for history and artifacts.

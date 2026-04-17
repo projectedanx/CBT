@@ -57,5 +57,7 @@ During the latest documentation and hardening phase, several key insights were c
 *   **Dependency Fragility:** Upgrading to Angular 21 introduces strict peer dependency checks (specifically regarding TypeScript 5.9 dev branches). The execution path must accommodate `--legacy-peer-deps` to bypass structural blocking during CI/CD or local initialization.
 *   **D3/Angular Interop:** The friction between declarative data-binding and imperative D3 force simulations is resolved via explicit lifecycle interception (`ngOnChanges`) triggering full reconstruction of the topology grid.
 
+*   **Agentic Sovereignty (AXIOM v1.0):** Integration of the AXIOM v1.0 Sovereign Agent Manifest via `AGENTS.md`. This operationalizes the 'Hickam-OODA RECURSIVE LOOP' persona, enforcing Draft-Conditioned Constrained Decoding (DCCD) to eliminate sycophancy and ensure all documentation generated within this repository acts as a deterministic, machine-parseable contract.
+
 ---
 *Built by Strategos & Sovereign Commander. End of File.*
