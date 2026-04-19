@@ -1,0 +1,2 @@
+- **Instability**: `package.json` contained a floating `"latest"` version specification for `tailwindcss`, introducing severe non-determinism and risk of pipeline rupture upon upstream major releases.
+- **Fortification**: Pinned `tailwindcss` to semantic constraint `^4.2.2`, enforcing strict boundary control and restoring manifest determinism.
