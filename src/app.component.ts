@@ -3,7 +3,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { GeminiService } from './services/gemini.service';
 import { ConceptGraphComponent } from './components/concept-graph.component';
-import { AppState, GenericSpaceResult, BlendResult, BlendedConcept, GraphData, ConceptNode, ConceptLink, HistoryItem } from './types';
+import { AppState, GenericSpaceResult, BlendResult, BlendedConcept, GraphData, ConceptNode, ConceptLink, HistoryItem, EpistemicOverride } from './types';
 
 /**
  * The sovereign controller of the Conceptual Blender architecture.
@@ -49,6 +49,10 @@ export class AppComponent {
   history = signal<HistoryItem[]>([]);
   /** Pointer to the specific historical artifact currently loaded into the context window. */
   currentHistoryItemId = signal<string | null>(null);
+
+  /** Tracks which blend is currently being annotated with a Golden Scar. */
+  activeOverrideBlend = signal<string | null>(null);
+
 
   /**
    * Bootstraps the primary controller and attempts to rehydrate the temporal archive from local storage.
@@ -254,6 +258,54 @@ export class AppComponent {
    * @param {BlendedConcept} blend - The generated artifact receiving feedback.
    * @param {'like' | 'dislike'} rating - The binary sentiment value.
    */
+
+  /**
+   * Injects a deterministic human contradiction (Epistemic Override) into a probabilistic artifact.
+   * This physicalizes the Golden Scar Protocol, resolving Algorithmic Shame by holding tension.
+   * @param {BlendedConcept} blend - The artifact receiving the override.
+   * @param {string} annotation - The deterministic human judgment.
+   * @param {number} score - The Contradiction Retention Score (0-100).
+   */
+  injectEpistemicOverride(blend: BlendedConcept, annotation: string, score: number) {
+    const override: EpistemicOverride = {
+      annotation,
+      contradictionRetentionScore: score,
+      timestamp: Date.now()
+    };
+
+    const currentResult = this.blendResult();
+    if (currentResult) {
+      const updatedBlends = currentResult.blends.map(b =>
+        b.name === blend.name ? { ...b, epistemicOverride: override } : b
+      );
+      this.blendResult.set({ ...currentResult, blends: updatedBlends });
+    }
+
+    const currentId = this.currentHistoryItemId();
+    if (currentId) {
+      this.history.update(items => items.map(item => {
+        if (item.id === currentId) {
+          const updatedBlends = item.blendResult.blends.map(b =>
+            b.name === blend.name ? { ...b, epistemicOverride: override } : b
+          );
+          return {
+            ...item,
+            blendResult: {
+              ...item.blendResult,
+              blends: updatedBlends
+            }
+          };
+        }
+        return item;
+      }));
+      this.persistHistory();
+    }
+
+    this.activeOverrideBlend.set(null);
+    this.notification.set(`Golden Scar Protocol injected into "${blend.name}". Tension stabilized.`);
+    setTimeout(() => this.notification.set(null), 3000);
+  }
+
   rateBlend(blend: BlendedConcept, rating: 'like' | 'dislike') {
     const newRating = blend.userRating === rating ? undefined : rating;
     
