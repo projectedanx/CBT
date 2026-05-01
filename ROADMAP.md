@@ -8,7 +8,7 @@
 
 ## Phase 2: Deepening (Upcoming)
 - [ ] **Recursive Blending:** Ability to select a generated "Blend" node and use it as an input for a new recursion (Iterative Blending).
-- [ ] **Visual Export:** Functionality to export the D3 graph as SVG/PNG for presentation.
+- [x] **Visual Export:** Functionality to export the D3 graph as SVG/PNG for presentation.
 - [ ] **Prompt Engineering Controls:** Advanced settings to adjust "Temperature" and "Top-K" directly from the UI for "Rough" vs. "Smooth" chromosome generation.
 - [ ] **Context Injection:** Ability to paste large text blocks (articles/papers) to extract concepts automatically before blending.
 
