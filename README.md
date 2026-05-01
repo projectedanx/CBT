@@ -61,3 +61,10 @@ During the latest documentation and hardening phase, several key insights were c
 
 ---
 *Built by Strategos & Sovereign Commander. End of File.*
+
+## 7. The Golden Scar Protocol (Epistemic Override)
+To bridge the probabilistic nature of the AI with the deterministic judgment of the human, this architecture implements the **Golden Scar Protocol**.
+
+When the AI generates a conceptual blend that introduces "Algorithmic Shame" or an irreconcilable stakeholder conflict, the human operator does not discard the artifact. Instead, they inject an **Epistemic Override**.
+
+This feature allows the operator to annotate the artifact with a deterministic truth and assign a **Contradiction Retention Score**. Rather than averaging out the conflict (which induces Semantic Annihilation), this physicalizes the contradiction, holding the tension stable as a topological state within the system's "Symbolic Scar Tissue Archive". This explicitly captures the value of both AI and Human that neither can provide alone: the AI provides the boundless latent exploration, while the human provides the strict, non-negotiable geometric bounds of reality.

@@ -245,6 +245,50 @@
                   <strong class="text-slate-400">Rationale:</strong> {{ blend.rationale }}
                 </div>
                 
+
+                <!-- Golden Scar Protocol (Epistemic Override) -->
+                <div class="mt-4 border-t border-slate-800 pt-3">
+                  @if (blend.epistemicOverride) {
+                    <div class="bg-yellow-900/20 border-l-2 border-yellow-500 p-3 rounded-r relative overflow-hidden group/scar">
+                      <div class="flex justify-between items-start mb-1">
+                        <span class="text-xs font-bold text-yellow-500 uppercase tracking-widest flex items-center gap-1">
+                          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path></svg>
+                          Golden Scar
+                        </span>
+                        <span class="text-[10px] bg-yellow-500/20 text-yellow-300 px-1.5 py-0.5 rounded" title="Contradiction Retention Score">
+                          CRS: {{ blend.epistemicOverride.contradictionRetentionScore }}
+                        </span>
+                      </div>
+                      <p class="text-slate-300 text-xs italic">"{{ blend.epistemicOverride.annotation }}"</p>
+                      <div class="text-[9px] text-slate-500 mt-2 font-mono uppercase text-right">
+                        Tension Stabilized
+                      </div>
+                    </div>
+                  } @else {
+                    @if (activeOverrideBlend() === blend.name) {
+                      <div class="bg-slate-900 border border-yellow-500/50 p-3 rounded">
+                        <div class="text-xs text-yellow-500 font-bold uppercase mb-2">Inject Epistemic Override</div>
+                        <textarea #annotationInput class="w-full bg-slate-950 border border-slate-700 text-slate-300 text-xs p-2 rounded focus:border-yellow-500 focus:outline-none mb-2 resize-none" rows="2" placeholder="Declare deterministic contradiction..."></textarea>
+
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                          <label class="text-[10px] text-slate-400 uppercase">Retention Score:</label>
+                          <input #scoreInput type="range" min="0" max="100" value="50" class="flex-1 accent-yellow-500 h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                        </div>
+
+                        <div class="flex justify-end gap-2">
+                           <button (click)="activeOverrideBlend.set(null)" class="text-[10px] text-slate-400 hover:text-slate-200 uppercase px-2 py-1">Cancel</button>
+                           <button (click)="injectEpistemicOverride(blend, annotationInput.value, scoreInput.valueAsNumber)" class="text-[10px] bg-yellow-600 hover:bg-yellow-500 text-slate-900 font-bold uppercase px-3 py-1 rounded transition-colors">Scar Artifact</button>
+                        </div>
+                      </div>
+                    } @else {
+                      <button (click)="activeOverrideBlend.set(blend.name)" class="w-full flex items-center justify-center gap-2 py-1.5 bg-slate-900/50 border border-slate-700 hover:border-yellow-500/50 hover:text-yellow-400 text-[10px] text-slate-500 rounded transition-colors uppercase tracking-wide border-dashed">
+                          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                          Apply Golden Scar
+                      </button>
+                    }
+                  }
+                </div>
+
                 <!-- Action Buttons: Rating & Save -->
                 <div class="mt-4 flex justify-between items-center pt-2">
                    <!-- Rating -->
