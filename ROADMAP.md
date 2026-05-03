@@ -24,3 +24,9 @@
 ## Post-Mortem Addendum: Phase 1 Documentation
 *   **Action:** Systemic JSDoc annotation and Angular 21 peer-dependency stabilization.
 *   **Result:** The codebase is now ontologically sealed. Theoretical intent (CBT) is bound to the compiler logic.
+
+## Phase 5: Aurelius Project Integration (New)
+- [ ] **Unified Meta-Prompting API:** Implementation of explicit prompt-level architectural directives mapping to "Phantom Dimensions" for spatial reasoning control.
+- [ ] **Agentic Oracle Feedback Loop:** Deployment of the autonomous workflow catalyst with real-time, differentiable ray tracing validation (SSIM/PSNR).
+- [ ] **Dynamic Provenance Trail:** Granular influence tracking and semantic drift debiasing through active training data re-weighting.
+- [ ] **Cross-Modal Perceptual Fusion:** Expansion of generative conditioning to encompass Multispectral Imaging (MSI) and Quantum Dot spectral properties.
