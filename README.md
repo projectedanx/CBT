@@ -68,3 +68,10 @@ To bridge the probabilistic nature of the AI with the deterministic judgment of 
 When the AI generates a conceptual blend that introduces "Algorithmic Shame" or an irreconcilable stakeholder conflict, the human operator does not discard the artifact. Instead, they inject an **Epistemic Override**.
 
 This feature allows the operator to annotate the artifact with a deterministic truth and assign a **Contradiction Retention Score**. Rather than averaging out the conflict (which induces Semantic Annihilation), this physicalizes the contradiction, holding the tension stable as a topological state within the system's "Symbolic Scar Tissue Archive". This explicitly captures the value of both AI and Human that neither can provide alone: the AI provides the boundless latent exploration, while the human provides the strict, non-negotiable geometric bounds of reality.
+
+## 8. VULCAN Topological Causal Sculpting (Phase 6 Integration)
+This architecture is continuously hardened against Semantic Saponification using the VULCAN node. VULCAN imposes strict Domain-Driven Design (DDD) boundaries and ensures the physical topology of the software intent maps to specific limits, such as:
+*   **The Mereological Mandate:** Prevention of transitive network and state access across microservice bounds.
+*   **The Epistemic Escrow:** Circuit breakers for CAP theorem violations and complex architectural contradictions.
+*   **Topological Inversion Strategy:** Agentic emergence is achieved not by probabilistic text generation, but by enforcing spatial and physical boundaries within latent spaces.
+For more details, consult `vulcan_emergence/plan.md`.

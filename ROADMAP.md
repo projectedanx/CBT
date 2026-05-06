@@ -30,3 +30,8 @@
 - [ ] **Agentic Oracle Feedback Loop:** Deployment of the autonomous workflow catalyst with real-time, differentiable ray tracing validation (SSIM/PSNR).
 - [ ] **Dynamic Provenance Trail:** Granular influence tracking and semantic drift debiasing through active training data re-weighting.
 - [ ] **Cross-Modal Perceptual Fusion:** Expansion of generative conditioning to encompass Multispectral Imaging (MSI) and Quantum Dot spectral properties.
+
+## Phase 6: VULCAN Topological Causal Sculpting (New)
+- [ ] **Mereological Enforcement:** Implementation of runtime checks to isolate components according to Winston's Taxonomy.
+- [ ] **STA (Symbolic Scar Archive) Monitor:** Automated PR validation against the VSA hypervectors to reject known failure geometries (e.g., Shared DB patterns).
+- [ ] **Epistemic Escrow Hook:** Real-time halting mechanisms during code synthesis if CFDI metric exceeds 0.15 threshold.
