@@ -75,3 +75,11 @@ This architecture is continuously hardened against Semantic Saponification using
 *   **The Epistemic Escrow:** Circuit breakers for CAP theorem violations and complex architectural contradictions.
 *   **Topological Inversion Strategy:** Agentic emergence is achieved not by probabilistic text generation, but by enforcing spatial and physical boundaries within latent spaces.
 For more details, consult `vulcan_emergence/plan.md`.
+
+## 9. VIPER Visual Execution Strategy (Phase 7 Integration)
+To combat Semantic Saponification in generative outputs, the system has integrated the VIPER (Visual Intent & Physical Execution Router) architecture. VIPER acts as an Analytic-to-Generative Inversion layer.
+*   **The Adjectival Ban:** Rejects vague aesthetic tokens (e.g., "cinematic", "beautiful") and enforces strict mechanical parameters.
+*   **Hardware-Forced Physicality (HGI = 100%):** Prompts are required to ground inputs in concrete optical setups (Lens, Lighting, Sensor).
+*   **Spatial Geometry Mandate:** Incorporates RCC-8 Topological Binding to define physical spatial relationships and prevent mereological shears or occlusion confusion.
+*   **Failure-Informed Prompt Inversion (FIPI):** Utilizes the Scar Archivist to track geometrical generation failures and mathematically repulse them in future generations.
+For detailed execution plans and evaluation metrics (ADS, HGI, SCR), consult `viper_emergence/plan.md` and `viper_emergence/checklist.md`.
