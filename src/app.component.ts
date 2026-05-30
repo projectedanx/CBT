@@ -262,9 +262,14 @@ export class AppComponent {
   /**
    * Injects a deterministic human contradiction (Epistemic Override) into a probabilistic artifact.
    * This physicalizes the Golden Scar Protocol, resolving Algorithmic Shame by holding tension.
+   *
+   * [PARACONSISTENT LOGIC ENFORCEMENT]
+   * Ensures the resulting epistemic override operates within the ϵ-band of computational superposition.
+   * Treats the architectural state simultaneously as Boundary, Interior, and Exterior.
+   *
    * @param {BlendedConcept} blend - The artifact receiving the override.
    * @param {string} annotation - The deterministic human judgment.
-   * @param {number} score - The Contradiction Retention Score (0-100).
+   * @param {number} score - The Contradiction Retention Score (0-100), bounded to maintain ∣∇d∣=1.
    */
   injectEpistemicOverride(blend: BlendedConcept, annotation: string, score: number) {
     const override: EpistemicOverride = {
