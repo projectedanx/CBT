@@ -83,3 +83,8 @@ To combat Semantic Saponification in generative outputs, the system has integrat
 *   **Spatial Geometry Mandate:** Incorporates RCC-8 Topological Binding to define physical spatial relationships and prevent mereological shears or occlusion confusion.
 *   **Failure-Informed Prompt Inversion (FIPI):** Utilizes the Scar Archivist to track geometrical generation failures and mathematically repulse them in future generations.
 For detailed execution plans and evaluation metrics (ADS, HGI, SCR), consult `viper_emergence/plan.md` and `viper_emergence/checklist.md`.
+
+## 10. Symbiotic Tensor Mesh Integration (Phase 8 Integration)
+The latest architectural evolution incorporates the **Symbiotic Tensor Mesh**. This maps the Epistemic Overrides (Golden Scar Protocol) directly onto the D3.js force-directed topology.
+*   **Physicalized Contradiction:** Human-assigned Contradiction Retention Scores (CRS) are computationally translated into localized gravitational mass.
+*   **Latent Constraint:** The AI generates unbounded latent concepts, but the physical rendering of those concepts is strictly bound by the human's deterministically injected gravity wells, preserving paraconsistent logic as spatial tension.
