@@ -108,8 +108,8 @@ export class AppComponent {
       br.blends.forEach((b, i) => {
         const id = `blend-${i}`;
         let nodeGravity: number | undefined;
-        if (b.epistemicOverride) {
-            nodeGravity = this.tensorMesh.calculateGravity(b.epistemicOverride.contradictionRetentionScore);
+        if (b.epistemicOverride && typeof b.epistemicOverride.contradictionRetentionScore === 'number' && !isNaN(b.epistemicOverride.contradictionRetentionScore)) {
+          nodeGravity = this.tensorMesh.calculateGravity(b.epistemicOverride.contradictionRetentionScore);
         }
         nodes.push({ id, label: b.name, type: 'blend', group: 4, gravity: nodeGravity });
         
