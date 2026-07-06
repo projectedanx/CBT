@@ -10,6 +10,8 @@ export interface ConceptNode {
   type: 'input-a' | 'input-b' | 'generic' | 'blend';
   /** The grouping identifier used for visualization clustering. */
   group: number;
+  /** The calculated gravitational pull of this node (Symbiotic Tensor Mesh). */
+  gravity?: number;
 }
 
 /**

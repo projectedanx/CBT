@@ -2,6 +2,7 @@ import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { GeminiService } from './services/gemini.service';
+import { SymbioticTensorMesh } from './services/tensor-mesh.service';
 import { ConceptGraphComponent } from './components/concept-graph.component';
 import { AppState, GenericSpaceResult, BlendResult, BlendedConcept, GraphData, ConceptNode, ConceptLink, HistoryItem, EpistemicOverride } from './types';
 
@@ -18,6 +19,7 @@ import { AppState, GenericSpaceResult, BlendResult, BlendedConcept, GraphData, C
 export class AppComponent {
   /** Reference to the cognitive engine handling external Gemini API synthesis. */
   private gemini = inject(GeminiService);
+  private tensorMesh = inject(SymbioticTensorMesh);
 
   /** Represents the current phase of the cognitive processing loop. */
   state = signal<AppState>('idle');
@@ -105,7 +107,11 @@ export class AppComponent {
     if (br) {
       br.blends.forEach((b, i) => {
         const id = `blend-${i}`;
-        nodes.push({ id, label: b.name, type: 'blend', group: 4 });
+        let nodeGravity: number | undefined;
+        if (b.epistemicOverride && typeof b.epistemicOverride.contradictionRetentionScore === 'number' && !isNaN(b.epistemicOverride.contradictionRetentionScore)) {
+          nodeGravity = this.tensorMesh.calculateGravity(b.epistemicOverride.contradictionRetentionScore);
+        }
+        nodes.push({ id, label: b.name, type: 'blend', group: 4, gravity: nodeGravity });
         
         links.push({ source: 'a', target: id, value: 2 });
         links.push({ source: 'b', target: id, value: 2 });

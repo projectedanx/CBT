@@ -98,7 +98,7 @@ export class ConceptGraphComponent implements OnChanges {
     // Simulation setup
     this.simulation = d3.forceSimulation<SimulationNode>(nodes)
       .force('link', d3.forceLink<SimulationNode, SimulationLink>(links).id(d => d.id).distance(100))
-      .force('charge', d3.forceManyBody().strength(-300))
+      .force('charge', d3.forceManyBody<SimulationNode>().strength(d => (d.gravity !== undefined && !isNaN(d.gravity)) ? d.gravity * 3000 : -300))
       .force('center', d3.forceCenter(width / 2, height / 2))
       .force('collide', d3.forceCollide(40));
 
