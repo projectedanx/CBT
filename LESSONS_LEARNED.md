@@ -12,3 +12,7 @@
 ## 3. Tooling Friction & Escrow
 *   **Observation:** Angular 21 zoneless architecture creates friction with imperative D3.js force bindings.
 *   **Resolution:** The Symbiotic Tensor Mesh acts as an intermediary mereological boundary, translating declarative human intention (CRS) into imperative D3 physics without violating the VULCAN mandate.
+
+## 4. Tensor Mesh Phase 8 Implementation
+*   **Observation:** The Phase 8 objective required a direct linkage between the human's abstract Contradiction Retention Score (CRS) and the physical rendering of the conceptual topology.
+*   **Resolution:** Computed gravity values from `SymbioticTensorMesh` are passed into the D3 visualization through the `ConceptNode` object. `d3.forceManyBody` dynamically scales its charge vector (`d.gravity * 3000`) creating attractive gravity wells where CRS is present. This fully bounds the latent space output within deterministic coordinates.
