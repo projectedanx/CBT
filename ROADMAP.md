@@ -21,6 +21,12 @@
 - [ ] **Personal Fine-Tuning:** Using the rating history to fine-tune a LoRA adapter for specific user aesthetic preferences.
 - [ ] ** Collaborative Blending:** Real-time multiplayer workspaces for team-based conceptual engineering.
 
+
+## Phase 11: Reflexive Repair Loop (Active)
+- [x] **Deterministic Verification:** Intercept generative payloads and validate against Semantic Integrity Constraints.
+- [x] **Bounded Iteration:** Implement 3-attempt hard ceiling for Failure-Informed Prompt Inversion (F-IPI).
+- [x] **Epistemic Escrow Integration:** Halt downstream execution and log Symbolic Scars upon unresolvable constraint violation.
+
 ## Post-Mortem Addendum: Phase 1 Documentation
 *   **Action:** Systemic JSDoc annotation and Angular 21 peer-dependency stabilization.
 *   **Result:** The codebase is now ontologically sealed. Theoretical intent (CBT) is bound to the compiler logic.
