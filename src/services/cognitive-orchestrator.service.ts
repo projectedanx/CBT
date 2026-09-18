@@ -1,4 +1,6 @@
 import { Injectable, signal, WritableSignal, inject } from '@angular/core';
+import { ReflexiveRepairLoopService } from './reflexive-repair-loop.service';
+import { SemanticIntegrityConstraint, LogicViolationReport } from '../types';
 import { GeminiService } from './gemini.service';
 import { HistoryService } from './history.service';
 import { AppState, GenericSpaceResult, BlendResult, BlendedConcept } from '../types';
@@ -15,6 +17,7 @@ export class CognitiveOrchestratorService {
   private gemini = inject(GeminiService);
   /** The injected History service used for maintaining temporal ledgers. */
   private historyService = inject(HistoryService);
+  private repairLoop = inject(ReflexiveRepairLoopService);
 
   /** Represents the current phase of the cognitive processing loop. */
   state: WritableSignal<AppState> = signal('idle');
@@ -75,20 +78,47 @@ export class CognitiveOrchestratorService {
     const currentType = this.blendType();
 
     try {
-      const resultB = await this.gemini.runConceptualBlend(
-        conceptA,
-        conceptB,
-        gs,
-        currentType,
-        this.temperature(),
-        this.topK()
+      // Define a basic Semantic Integrity Constraint to test the loop
+      const constraints: SemanticIntegrityConstraint[] = [
+        {
+          constraintId: 'VALID_BLEND_STRUCTURE',
+          description: 'The blend result must contain at least one blended concept.',
+          validationLogic: (payload: any) => {
+            return payload && payload.blends && Array.isArray(payload.blends) && payload.blends.length > 0;
+          }
+        }
+      ];
+
+      const generatorFn = async (lvr?: LogicViolationReport) => {
+         // In a real system, the LVR would be injected into the prompt via F-IPI
+         return await this.gemini.runConceptualBlend(
+            conceptA,
+            conceptB,
+            gs,
+            currentType,
+            this.temperature(),
+            this.topK()
+         );
+      };
+
+      const resultB = await this.repairLoop.executeReflexiveRepair(
+          generatorFn,
+          constraints,
+          `blend_${conceptA}_${conceptB}`,
+          'src/services/cognitive-orchestrator.service.ts'
       );
+
       this.blendResult.set(resultB);
       this.state.set('complete');
       this.historyService.addToHistory(conceptA, conceptB, resultB, gs, currentType);
     } catch (e) {
-      this.state.set('error');
-      this.errorMessage.set('Blending synthesis failed.');
+      if (this.repairLoop.escrowTripped()) {
+          this.state.set('error');
+          this.errorMessage.set('Epistemic Escrow Triggered: Maximum repair attempts exceeded. System halted to protect integrity.');
+      } else {
+          this.state.set('error');
+          this.errorMessage.set('Blending synthesis failed.');
+      }
       console.error(e);
     }
   }

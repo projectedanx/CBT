@@ -216,3 +216,47 @@ export interface MSIParameters {
   /** Target hardware profile for perceptual fidelity optimization. */
   targetHardwareProfile: 'quantum_dot' | 'standard_rgb' | 'hdr10';
 }
+
+
+/**
+ * PHASE 11: REFLEXIVE REPAIR LOOP
+ */
+
+/**
+ * Defines a structural rule that generation outputs must not violate.
+ */
+export interface SemanticIntegrityConstraint {
+  constraintId: string;
+  description: string;
+  validationLogic: (payload: any) => boolean;
+}
+
+/**
+ * Structured report generated when System 2 (Deterministic Verifier) detects a constraint violation.
+ */
+export interface LogicViolationReport {
+  timestamp: string;
+  violatedConstraintId: string;
+  erroneousPayload: any;
+  rejectionReason: string;
+}
+
+/**
+ * A durable record of an unresolved or resolved logic violation, stored to prevent future occurrences via FIPI.
+ */
+export interface SymbolicScar {
+  scar_id: string;
+  timestamp: string;
+  failure_mode: string;
+  module_path: string;
+  trauma_context: {
+    initial_prompt_vector_id: string;
+    erroneous_output: string;
+    constraint_violation: string;
+  };
+  reparation_delta: {
+    successful_repair_output: string | null;
+    attempts_to_resolution: number;
+    failure_utility_loss_tokens: number;
+  };
+}
