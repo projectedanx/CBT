@@ -28,6 +28,28 @@ export class SymbioticTensorMesh {
    * @param {number} crs - The Contradiction Retention Score (0-100).
    * @returns {number} The calculated gravity value for D3 force simulation.
    */
+
+  /**
+   * Calculates the exact Topological Derivative of a stakeholder dissonance event.
+   * Utilizes simulated DE-9IM Signed Distance Field mapping logic to determine
+   * the organizational force required to lock the contradiction.
+   *
+   * @param {number} tensionScore - The injected tension score (0-100).
+   * @returns {number} The topological derivative modifier.
+   */
+  public calculateTopologicalDerivative(tensionScore: number): number {
+    const boundedTension = Math.max(0, Math.min(100, tensionScore));
+    // Simulate S5-Modal Attention DE-9IM mapping.
+    // Tension is normalized and passed through a derivative function bounded by phi.
+    const normalizedTension = boundedTension / 100.0;
+
+    // Non-linear amplification of dissonance to simulate Interference Fit
+    const derivative = Math.pow(normalizedTension, 2) * this.PHI;
+
+    // Returns the force modifier
+    return derivative;
+  }
+
   public calculateGravity(crs: number): number {
     // Sanitize input boundaries
     const boundedCrs = Math.max(0, Math.min(100, crs));

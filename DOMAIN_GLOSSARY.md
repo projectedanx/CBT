@@ -13,3 +13,12 @@
 *   **Polyglot Hallucination Resonance:** The systemic failure where multi-agent swarms crystallize shared pre-training biases into a false consensus, masking structural corruption within empirical documentation.
 *   **Mereological Mandate:** The strict restriction against transitive network and state access across bounded contexts (microservices). Enforced by VULCAN.
 *   **Epistemic Escrow:** A circuit breaker halting execution on CAP theorem violations. Quarantines contextual claims demonstrating a Source Provenance Ratio < 0.70.
+
+### Topological Derivative
+The exact organizational force required to lock a contradiction as a stable topological state, treating stakeholder conflict as an Interference Fit rather than a communication error.
+
+### S5-Modal Attention
+A cognitive mapping parameter applied to attention matrices using S5 Kripke frames to maintain the interference patterns of Polysemantic Superpositions, preventing contradictory constraints from destroying each other.
+
+### Pluriversal Lenses
+Five distinct analytical frameworks (Digital Habitus, Extractive Sprint, Crip-Time Genealogy, Relational Sovereignty, Artifact Imperfection) used to bypass superficial organizational analysis and inject deterministic socio-technical dissonance into the architectural model.
