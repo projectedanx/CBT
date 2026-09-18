@@ -14,12 +14,17 @@ export class HistoryService {
   /** The currently active temporal ledger entry identifier. */
   currentHistoryItemId: WritableSignal<string | null> = signal(null);
 
+  /**
+   * Initializes the HistoryService, immediately attempting to rehydrate state from local storage.
+   */
   constructor() {
     this.loadHistory();
   }
 
   /**
    * Initializes the temporal ledger from local storage.
+   *
+   * @returns {void} No return value.
    */
   private loadHistory() {
     const saved = localStorage.getItem('cbt_history');
@@ -41,6 +46,7 @@ export class HistoryService {
    * @param {BlendResult} result - The output payload.
    * @param {GenericSpaceResult} generic - The abstract topology.
    * @param {'composition' | 'completion' | 'elaboration'} type - The methodological constraint used.
+   * @returns {void} No return value.
    */
   addToHistory(
     conceptA: string,
@@ -72,6 +78,7 @@ export class HistoryService {
    * @param {string} conceptB - Input Concept B.
    * @param {GenericSpaceResult} gs - Generic space result.
    * @param {'composition' | 'completion' | 'elaboration'} blendType - The blend type.
+   * @returns {void} No return value.
    */
   saveBlend(blend: BlendedConcept, conceptA: string, conceptB: string, gs: GenericSpaceResult, blendType: 'composition' | 'completion' | 'elaboration') {
     const specificResult: BlendResult = {
@@ -98,6 +105,7 @@ export class HistoryService {
    * Updates an item in the history.
    * @param {string} id - History item ID.
    * @param {HistoryItem} updatedItem - The updated item.
+   * @returns {void} No return value.
    */
   updateHistoryItem(id: string, updatedItem: HistoryItem) {
      this.history.update(items => items.map(item => item.id === id ? updatedItem : item));
@@ -106,6 +114,8 @@ export class HistoryService {
 
   /**
    * Irreversibly purges the temporal ledger from local storage and volatile memory.
+   *
+   * @returns {void} No return value.
    */
   clearHistory() {
     this.history.set([]);
@@ -115,6 +125,8 @@ export class HistoryService {
 
   /**
    * Flushes volatile ledger structures into static browser storage.
+   *
+   * @returns {void} No return value.
    */
   public persistHistory() {
     localStorage.setItem('cbt_history', JSON.stringify(this.history()));

@@ -19,6 +19,10 @@ import { AppState, GenericSpaceResult, BlendResult, BlendedConcept, GraphData, C
   imports: [CommonModule, FormsModule, ReactiveFormsModule, ConceptGraphComponent, DatePipe],
   templateUrl: './app.component.html'
 })
+/**
+ * The primary controller component for the CBT interface.
+ * Orchestrates data flow between UI, the Cognitive Orchestrator, and the Tensor Mesh.
+ */
 export class AppComponent {
   /** Reference to the cognitive engine handling external Gemini API synthesis. */
   public orchestrator = inject(CognitiveOrchestratorService);
@@ -27,9 +31,12 @@ export class AppComponent {
 
   /** Represents the current phase of the cognitive processing loop. */
   /** Form control representing the first input conceptual domain (Space Alpha). */
+  /** Form control for Space Alpha input. */
   conceptA = new FormControl('Mycelium Network', [Validators.required]);
   /** Form control representing the second input conceptual domain (Space Beta). */
+  /** Form control for Space Beta input. */
   conceptB = new FormControl('Corporate Hierarchy', [Validators.required]);
+  /** Signal for global system notifications. */
   notification = signal<string | null>(null);
   
   /** The specific cognitive strategy applied to force the convergence of disparate domains. */
@@ -49,8 +56,11 @@ export class AppComponent {
 
   /** Tracks which blend is currently being annotated with a Golden Scar. */
 
+  /** Tracks which blend is currently being annotated with an Epistemic Override. */
   activeOverrideBlend = signal<string | null>(null);
+  /** Tracks which blend is currently receiving stakeholder dissonance injection. */
   activeDissonanceBlend = signal<string | null>(null);
+  /** The available pluriversal lenses for dissonance injection. */
   pluriversalLenses: PluriversalLens[] = ['Digital_Habitus', 'Extractive_Sprint', 'Crip-Time_Genealogy', 'Relational_Sovereignty', 'Artifact_Imperfection'];
 
 
@@ -153,21 +163,43 @@ export class AppComponent {
   }
 
 
+  /**
+   * Executes Phase 2 of the loop: Conceptual Blend Synthesis.
+   *
+   * @returns {Promise<void>} A promise resolving when blending is complete.
+   */
   async performBlend() {
     await this.orchestrator.performBlend(this.conceptA.value!, this.conceptB.value!);
   }
 
 
+  /**
+   * Mutates the cognitive blending strategy directive.
+   *
+   * @param {'composition' | 'completion' | 'elaboration'} type - The blending strategy to use.
+   * @returns {void} No return value.
+   */
   setBlendType(type: 'composition' | 'completion' | 'elaboration') {
     this.orchestrator.setBlendType(type, this.conceptA.value!, this.conceptB.value!);
   }
 
 
+  /**
+   * Resets the active operational state to idle.
+   *
+   * @returns {void} No return value.
+   */
   reset() {
     this.orchestrator.reset();
   }
 
 
+  /**
+   * Archives a specific generated artifact permanently.
+   *
+   * @param {BlendedConcept} blend - The blend to archive.
+   * @returns {void} No return value.
+   */
   saveBlend(blend: BlendedConcept) {
     const gs = this.orchestrator.genericSpace();
     if (!gs) return;
@@ -176,6 +208,14 @@ export class AppComponent {
     setTimeout(() => this.notification.set(null), 3000);
   }
 
+  /**
+   * Injects structured dissonance via a selected Pluriversal Lens to deform the generated topology.
+   *
+   * @param {BlendedConcept} blend - The blend to inject dissonance into.
+   * @param {string} lens - The pluriversal lens to apply.
+   * @param {number} tensionScore - The degree of dissonance to inject (0-100).
+   * @returns {void} No return value.
+   */
   injectStakeholderDissonance(blend: BlendedConcept, lens: string, tensionScore: number) {
     const topoDerivative = this.tensorMesh.calculateTopologicalDerivative(tensionScore);
     const dissonance: StakeholderDissonance = {
@@ -194,6 +234,14 @@ export class AppComponent {
     this.activeDissonanceBlend.set(null);
   }
 
+  /**
+   * Triggers the Golden Scar Protocol to inject a non-negotiable deterministic boundary into a probabilistic artifact.
+   *
+   * @param {BlendedConcept} blend - The blend being overridden.
+   * @param {string} annotation - The operator's corrective justification.
+   * @param {number} score - The contradiction retention score (0-100).
+   * @returns {void} No return value.
+   */
   injectEpistemicOverride(blend: BlendedConcept, annotation: string, score: number) {
     const override: EpistemicOverride = {
       annotation,
@@ -234,6 +282,13 @@ export class AppComponent {
     setTimeout(() => this.notification.set(null), 3000);
   }
 
+  /**
+   * Applies a subjective quality metric to a generated artifact.
+   *
+   * @param {BlendedConcept} blend - The blend to rate.
+   * @param {'like' | 'dislike'} rating - The subjective evaluation.
+   * @returns {void} No return value.
+   */
   rateBlend(blend: BlendedConcept, rating: 'like' | 'dislike') {
     const newRating = blend.userRating === rating ? undefined : rating;
     
@@ -284,15 +339,12 @@ export class AppComponent {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  /**
-   * Appends the output of a completed cognitive loop to the persistent temporal ledger.
+    /**
+   * Rehydrates the active context window with a previously archived operational state.
    *
-   * @param {BlendResult} result - The output payload containing the generated artifacts.
-   * @param {GenericSpaceResult} generic - The abstract topology linking the inputs.
-   * @param {'composition' | 'completion' | 'elaboration'} type - The methodological constraint used.
+   * @param {HistoryItem} item - The temporal ledger record to load.
+   * @returns {void} No return value.
    */
-
-
   loadHistory(item: HistoryItem) {
     this.orchestrator.state.set('complete');
     this.conceptA.setValue(item.conceptA);
@@ -304,6 +356,11 @@ export class AppComponent {
   }
 
 
+  /**
+   * Erases all operational history from the persistent temporal ledger.
+   *
+   * @returns {void} No return value.
+   */
   clearHistory() {
     this.historyService.clearHistory();
   }

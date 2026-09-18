@@ -89,7 +89,7 @@ The latest architectural evolution incorporates the **Symbiotic Tensor Mesh**. T
 *   **Physicalized Contradiction:** Human-assigned Contradiction Retention Scores (CRS) are computationally translated into localized gravitational mass.
 *   **Latent Constraint:** The AI generates unbounded latent concepts, but the physical rendering of those concepts is strictly bound by the human's deterministically injected gravity wells, preserving paraconsistent logic as spatial tension.
 
-### 5. Stakeholder Dissonance Matrix
+### Stakeholder Dissonance Matrix
 The architecture physically encapsulates the "Topological Derivative of Stakeholder Dissonance".
 Rather than averaging out human contradictions (Semantic Annihilation), users can inject tensions using the **Five Pluriversal Lenses**:
 1. Digital Habitus
@@ -99,3 +99,10 @@ Rather than averaging out human contradictions (Semantic Annihilation), users ca
 5. Artifact Imperfection
 
 The Symbiotic Tensor Mesh calculates the S5-Modal Attention force required to lock this contradiction into the structural graph, actively changing the gravitational boundaries of the generated artifacts.
+
+
+## 11. Codebase Documentation Standards
+All new contributions to the system must adhere to strict JSDoc guidelines. Every public class, method, property, and interface must be fully documented, explaining:
+- Its structural purpose within the CBT architecture.
+- Detailed descriptions of parameters and return types.
+- Theoretical rationales when implementing specific cognitive heuristics or mathematical bounds (e.g., the Golden Ratio constraints).
