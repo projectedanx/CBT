@@ -16,18 +16,10 @@ export class SymbioticTensorMesh {
   /** The Golden Ratio, used as the maximum scaling factor for severe contradictions. */
   private readonly PHI = 1.618;
 
-  constructor() { }
-
   /**
-   * Calculates the localized gravitational force multiplier based on the human's
-   * Contradiction Retention Score (CRS).
-   *
-   * [∇] Uncertainty: The exact polynomial curve for CRS to Gravity scaling is
-   * a heuristic. Currently using linear scaling mapped to the Golden Ratio (Φ) max constraint.
-   *
-   * @param {number} crs - The Contradiction Retention Score (0-100).
-   * @returns {number} The calculated gravity value for D3 force simulation.
+   * Initializes the SymbioticTensorMesh.
    */
+  constructor() { }
 
   /**
    * Calculates the exact Topological Derivative of a stakeholder dissonance event.
@@ -50,6 +42,16 @@ export class SymbioticTensorMesh {
     return derivative;
   }
 
+  /**
+   * Calculates the localized gravitational force multiplier based on the human's
+   * Contradiction Retention Score (CRS).
+   *
+   * [∇] Uncertainty: The exact polynomial curve for CRS to Gravity scaling is
+   * a heuristic. Currently using linear scaling mapped to the Golden Ratio (Φ) max constraint.
+   *
+   * @param {number} crs - The Contradiction Retention Score (0-100).
+   * @returns {number} The calculated gravity value for D3 force simulation.
+   */
   public calculateGravity(crs: number): number {
     // Sanitize input boundaries
     const boundedCrs = Math.max(0, Math.min(100, crs));

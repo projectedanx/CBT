@@ -11,7 +11,9 @@ import { AppState, GenericSpaceResult, BlendResult, BlendedConcept } from '../ty
   providedIn: 'root'
 })
 export class CognitiveOrchestratorService {
+  /** The injected Gemini service used for AI interactions. */
   private gemini = inject(GeminiService);
+  /** The injected History service used for maintaining temporal ledgers. */
   private historyService = inject(HistoryService);
 
   /** Represents the current phase of the cognitive processing loop. */
@@ -33,6 +35,10 @@ export class CognitiveOrchestratorService {
 
   /**
    * Triggers the primary Petzold Loop. Begins Phase 1: Mapping the Generic Space.
+   *
+   * @param {string} conceptA - The first input concept to analyze.
+   * @param {string} conceptB - The second input concept to analyze.
+   * @returns {Promise<void>} A promise resolving when the analysis is complete.
    */
   async startAnalysis(conceptA: string, conceptB: string) {
     this.state.set('analyzing');
@@ -56,6 +62,10 @@ export class CognitiveOrchestratorService {
 
   /**
    * Executes Phase 2 of the loop: Conceptual Blend Synthesis.
+   *
+   * @param {string} conceptA - The first input concept used in the blend.
+   * @param {string} conceptB - The second input concept used in the blend.
+   * @returns {Promise<void>} A promise resolving when the blending synthesis is complete.
    */
   async performBlend(conceptA: string, conceptB: string) {
     const gs = this.genericSpace();
@@ -85,6 +95,11 @@ export class CognitiveOrchestratorService {
 
   /**
    * Mutates the cognitive blending strategy directive. Re-triggers synthesis if a valid mapping exists.
+   *
+   * @param {'composition' | 'completion' | 'elaboration'} type - The new blending strategy to apply.
+   * @param {string} conceptA - The first input concept used in the blend.
+   * @param {string} conceptB - The second input concept used in the blend.
+   * @returns {void} No return value.
    */
   setBlendType(type: 'composition' | 'completion' | 'elaboration', conceptA: string, conceptB: string) {
     this.blendType.set(type);
@@ -95,6 +110,8 @@ export class CognitiveOrchestratorService {
 
   /**
    * Purges the volatile active context window.
+   *
+   * @returns {void} No return value.
    */
   reset() {
     this.state.set('idle');
