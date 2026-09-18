@@ -110,10 +110,17 @@ export class AppComponent {
       br.blends.forEach((b, i) => {
         const id = `blend-${i}`;
         let nodeGravity: number | undefined;
+        let zPos: number | undefined;
+        let isPhantom: boolean | undefined;
+
         if (b.epistemicOverride && typeof b.epistemicOverride.contradictionRetentionScore === 'number' && !isNaN(b.epistemicOverride.contradictionRetentionScore)) {
           nodeGravity = this.tensorMesh.calculateGravity(b.epistemicOverride.contradictionRetentionScore);
+          if (b.epistemicOverride.contradictionRetentionScore > 0) {
+            zPos = (b.epistemicOverride.contradictionRetentionScore * 3.0) / Math.E; // VW3 Dissonance weight
+            isPhantom = true;
+          }
         }
-        nodes.push({ id, label: b.name, type: 'blend', group: 4, gravity: nodeGravity });
+        nodes.push({ id, label: b.name, type: 'blend', group: 4, gravity: nodeGravity, z: zPos, phantomDimension: isPhantom });
         
         links.push({ source: 'a', target: id, value: 2 });
         links.push({ source: 'b', target: id, value: 2 });

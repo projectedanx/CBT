@@ -169,4 +169,14 @@ export class GeminiService {
       throw e;
     }
   }
+
+  /**
+   * Provides direct access to the underlying Google GenAI client for specialized discovery operations.
+   * Exposes the client for recursive meta-prompting tasks.
+   *
+   * @returns {GoogleGenAI} The authenticated GenAI client instance.
+   */
+  getClient(): GoogleGenAI {
+    return this.ai;
+  }
 }
