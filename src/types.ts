@@ -53,6 +53,21 @@ export interface GenericSpaceResult {
  * Represents a deterministic human intervention injected into a probabilistic AI generation.
  * Embodies the Golden Scar Protocol to maintain tension.
  */
+
+/**
+ * The five Pluriversal Lenses used to inject deterministic socio-technical dissonance.
+ */
+export type PluriversalLens = 'Digital_Habitus' | 'Extractive_Sprint' | 'Crip-Time_Genealogy' | 'Relational_Sovereignty' | 'Artifact_Imperfection';
+
+/**
+ * Represents the topological mapping of stakeholder dissonance.
+ */
+export interface StakeholderDissonance {
+  lens: PluriversalLens;
+  tensionScore: number; // 0-100
+  topologicalDerivative?: number; // Calculated by TensorMesh
+}
+
 export interface EpistemicOverride {
   /** The deterministic human annotation overriding or challenging the AI artifact. */
   annotation: string;
@@ -80,6 +95,8 @@ export interface BlendedConcept {
   userRating?: 'like' | 'dislike';
   /** Optional human intervention mapping an unresolved contradiction onto the artifact. */
   epistemicOverride?: EpistemicOverride;
+  /** Stakeholder Dissonance injected via Pluriversal Lenses. */
+  stakeholderDissonance?: StakeholderDissonance;
 }
 
 /**

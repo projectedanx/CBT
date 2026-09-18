@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule, FormControl, Validators } from '@angu
 import { GeminiService } from './services/gemini.service';
 import { SymbioticTensorMesh } from './services/tensor-mesh.service';
 import { ConceptGraphComponent } from './components/concept-graph.component';
-import { AppState, GenericSpaceResult, BlendResult, BlendedConcept, GraphData, ConceptNode, ConceptLink, HistoryItem, EpistemicOverride } from './types';
+import { AppState, GenericSpaceResult, BlendResult, BlendedConcept, GraphData, ConceptNode, ConceptLink, HistoryItem, EpistemicOverride, PluriversalLens, StakeholderDissonance } from './types';
 
 /**
  * The sovereign controller of the Conceptual Blender architecture.
@@ -53,7 +53,11 @@ export class AppComponent {
   currentHistoryItemId = signal<string | null>(null);
 
   /** Tracks which blend is currently being annotated with a Golden Scar. */
+
   activeOverrideBlend = signal<string | null>(null);
+  activeDissonanceBlend = signal<string | null>(null);
+  pluriversalLenses: PluriversalLens[] = ['Digital_Habitus', 'Extractive_Sprint', 'Crip-Time_Genealogy', 'Relational_Sovereignty', 'Artifact_Imperfection'];
+
 
 
   /**
@@ -277,6 +281,29 @@ export class AppComponent {
    * @param {string} annotation - The deterministic human judgment.
    * @param {number} score - The Contradiction Retention Score (0-100), bounded to maintain ∣∇d∣=1.
    */
+
+  /**
+   * Injects Stakeholder Dissonance using a selected Pluriversal Lens.
+   * Modifies the UI and stores the S5-Modal Attention topological derivative.
+   */
+  injectStakeholderDissonance(blend: BlendedConcept, lens: string, tensionScore: number) {
+    const topoDerivative = this.tensorMesh.calculateTopologicalDerivative(tensionScore);
+    const dissonance: StakeholderDissonance = {
+      lens: lens as PluriversalLens,
+      tensionScore: tensionScore,
+      topologicalDerivative: topoDerivative
+    };
+
+    const currentResult = this.blendResult();
+    if (currentResult) {
+      const updatedBlends = currentResult.blends.map(b =>
+        b.name === blend.name ? { ...b, stakeholderDissonance: dissonance } : b
+      );
+      this.blendResult.set({ ...currentResult, blends: updatedBlends });
+    }
+    this.activeDissonanceBlend.set(null);
+  }
+
   injectEpistemicOverride(blend: BlendedConcept, annotation: string, score: number) {
     const override: EpistemicOverride = {
       annotation,
