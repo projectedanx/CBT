@@ -46,7 +46,6 @@ metadata:
   - http://example.org/sepao/ontology#v0.1
   - https://www.w3.org/ns/prov#
   context_hashes:
-  - docs/adr/15-reflexive-repair-loop.md:pending_hash_update
   - pkm/biolux_sdl_framework.md:sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
   - pkm/algorithmic_kintsugi.md:sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
   corpus_uuid: urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6
@@ -89,3 +88,10 @@ validation_gates:
   - Ensure all referenced markdown file paths exist in the local Git workspace.
   - Verify that all edge source and target node UUIDs resolve successfully.
   - Run PyYAML / schema validation before updating the SQLite-Vec indexes.
+  - node_id: N013
+    relations:
+    - target_id: N010
+      type: modulates
+    title: Variable Viscosity Prompting
+    type: architectural_constraint
+    uri: docs/adr/16-rheological-controller.md

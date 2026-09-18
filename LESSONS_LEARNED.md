@@ -78,3 +78,8 @@ Inverting the hegemonic data relationship by strictly tethering the generative c
 **Insights:**
 1.  **The Deterministic Funnel:** Generative AI cannot be trusted with uncontrolled state mutation. By injecting a System 2 Verifier (Semantic Integrity Constraints), we effectively funnel stochastic output into deterministic reliability.
 2.  **Epistemic Escrow is Mandatory:** The 3-attempt Loop Constraint prevents "agent thrashing". Unresolved failures must trip the Epistemic Escrow, logging a Symbolic Scar rather than allowing a silent failure or hallucinated compromise to enter the system.
+
+## Cognitive Viscosity and the Rheological Controller
+**Observation:** Manual adjustments to model temperature and top-K often resulted in either deterministic rigidity or uncontrollable hallucinations. We needed a thermodynamic approach to information flow.
+**Implication:** Exposing raw generation parameters to UI components violates the VULCAN Mereological Mandate. We must encapsulate generation physics into formalized semantic "modes".
+**Decision:** Implemented Variable Viscosity Prompting (VVP) via the `RheologicalControllerService` (ADR-16). The system now explicitly tracks and operates in `CRYSTAL` (strict schema, Temp: 0) or `CLOUD` (high-entropy, Temp > 0.7) modes, dynamically responding to semantic entropy telemetry.
