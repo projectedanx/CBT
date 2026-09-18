@@ -9,7 +9,7 @@
       <p class="text-slate-500 text-sm tracking-wide mt-1">Sovereign Cognitive Architecture // v5.0</p>
     </div>
     <div class="text-xs font-mono text-slate-600 border border-slate-800 px-2 py-1 rounded">
-      SYSTEM STATUS: <span [class]="state() === 'error' ? 'text-red-500' : 'text-emerald-500'">ONLINE</span>
+      SYSTEM STATUS: <span [class]="orchestrator.state() === 'error' ? 'text-red-500' : 'text-emerald-500'">ONLINE</span>
     </div>
   </header>
 
@@ -61,9 +61,9 @@
                     <div>
                         <div class="flex justify-between text-xs mb-1">
                             <span class="text-slate-400">Entropy (Temperature)</span>
-                            <span class="font-mono text-blue-400">{{ temperature() }}</span>
+                            <span class="font-mono text-blue-400">{{ orchestrator.temperature() }}</span>
                         </div>
-                        <input type="range" min="0" max="2" step="0.1" [value]="temperature()" (input)="updateTemperature($event)" 
+                        <input type="range" min="0" max="2" step="0.1" [value]="orchestrator.temperature()" (input)="updateTemperature($event)"
                                class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500">
                         <div class="flex justify-between text-[10px] text-slate-600 mt-1">
                             <span>Precise</span>
@@ -74,9 +74,9 @@
                     <div>
                         <div class="flex justify-between text-xs mb-1">
                             <span class="text-slate-400">Beam Width (Top-K)</span>
-                            <span class="font-mono text-blue-400">{{ topK() }}</span>
+                            <span class="font-mono text-blue-400">{{ orchestrator.topK() }}</span>
                         </div>
-                        <input type="range" min="1" max="40" step="1" [value]="topK()" (input)="updateTopK($event)" 
+                        <input type="range" min="1" max="40" step="1" [value]="orchestrator.topK()" (input)="updateTopK($event)"
                                class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500">
                     </div>
                 </div>
@@ -86,9 +86,9 @@
         <div class="mt-6">
           <button 
             (click)="startAnalysis()"
-            [disabled]="state() === 'analyzing' || state() === 'blending' || conceptA.invalid || conceptB.invalid"
+            [disabled]="orchestrator.state() === 'analyzing' || orchestrator.state() === 'blending' || conceptA.invalid || conceptB.invalid"
             class="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold rounded shadow-lg shadow-blue-900/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform active:scale-[0.98]">
-            @if (state() === 'analyzing' || state() === 'blending') {
+            @if (orchestrator.state() === 'analyzing' || orchestrator.state() === 'blending') {
               <span class="animate-pulse">PROCESSING ENTROPY...</span>
             } @else {
               INITIATE BLEND PROTOCOL
@@ -98,7 +98,7 @@
       </div>
 
       <!-- Controls (Visible after blend or during blend) -->
-      @if (genericSpace()) {
+      @if (orchestrator.genericSpace()) {
         <div class="bg-slate-900 border border-slate-800 p-5 rounded-lg shadow-lg relative animate-in slide-in-from-left-4 duration-500">
           <div class="absolute top-0 left-0 w-1 h-full bg-purple-500"></div>
           <h2 class="text-lg font-semibold text-purple-400 mb-4 uppercase tracking-wider text-xs">Blend Topology</h2>
@@ -106,21 +106,21 @@
           <div class="flex flex-col gap-2">
             <button 
               (click)="setBlendType('composition')"
-              [class.bg-slate-700]="blendType() === 'composition'"
+              [class.bg-slate-700]="orchestrator.blendType() === 'composition'"
               class="text-left px-4 py-3 rounded border border-slate-700 hover:border-purple-500 transition-all text-sm group">
               <div class="font-bold group-hover:text-purple-400">COMPOSITION</div>
               <div class="text-xs text-slate-500">Combine elements directly.</div>
             </button>
             <button 
               (click)="setBlendType('completion')"
-              [class.bg-slate-700]="blendType() === 'completion'"
+              [class.bg-slate-700]="orchestrator.blendType() === 'completion'"
               class="text-left px-4 py-3 rounded border border-slate-700 hover:border-purple-500 transition-all text-sm group">
               <div class="font-bold group-hover:text-purple-400">COMPLETION</div>
               <div class="text-xs text-slate-500">Invoke background frames.</div>
             </button>
             <button 
               (click)="setBlendType('elaboration')"
-              [class.bg-slate-700]="blendType() === 'elaboration'"
+              [class.bg-slate-700]="orchestrator.blendType() === 'elaboration'"
               class="text-left px-4 py-3 rounded border border-slate-700 hover:border-purple-500 transition-all text-sm group">
               <div class="font-bold group-hover:text-purple-400">ELABORATION</div>
               <div class="text-xs text-slate-500">Run the mental simulation.</div>
@@ -130,7 +130,7 @@
       }
 
       <!-- Generic Space Info -->
-      @if (genericSpace(); as gs) {
+      @if (orchestrator.genericSpace(); as gs) {
         <div class="bg-slate-900/50 border border-slate-800 p-4 rounded text-sm">
           
           <!-- Similarity Score -->
@@ -161,18 +161,18 @@
         <div class="absolute top-0 left-0 w-1 h-full bg-slate-600"></div>
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-lg font-semibold text-slate-400 uppercase tracking-wider text-xs">Temporal Archives</h2>
-            @if (history().length > 0) {
+            @if (historyService.history().length > 0) {
                 <button (click)="clearHistory()" class="text-[10px] text-slate-600 hover:text-red-400 transition-colors uppercase">Clear</button>
             }
         </div>
 
         <div class="flex flex-col gap-2 max-h-60 overflow-y-auto pr-2">
-          @for (item of history(); track item.id) {
+          @for (item of historyService.history(); track item.id) {
             <button 
               (click)="loadHistory(item)"
-              [class.border-l-4]="item.id === currentHistoryItemId()"
-              [class.border-l-emerald-500]="item.id === currentHistoryItemId()"
-              [class.border-l-transparent]="item.id !== currentHistoryItemId()"
+              [class.border-l-4]="item.id === historyService.currentHistoryItemId()"
+              [class.border-l-emerald-500]="item.id === historyService.currentHistoryItemId()"
+              [class.border-l-transparent]="item.id !== historyService.currentHistoryItemId()"
               class="text-left bg-slate-950/50 border border-slate-800 hover:border-blue-500/50 p-3 rounded transition-all group w-full relative">
               
               @if(item.isManualSave) {
@@ -207,7 +207,7 @@
 
         <!-- Action Overlay -->
         <div class="absolute bottom-4 right-4 flex gap-2">
-          @if (state() === 'complete') {
+          @if (orchestrator.state() === 'complete') {
             <button (click)="conceptGraph.exportSVG()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded text-xs border border-slate-600 transition-colors flex items-center gap-1 shadow-lg">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
               EXPORT TOPOLOGY
@@ -225,7 +225,7 @@
       </div>
 
       <!-- Results Area -->
-      @if (blendResult(); as result) {
+      @if (orchestrator.blendResult(); as result) {
         <div class="bg-slate-900 border border-slate-800 rounded-lg p-6 shadow-xl animate-in fade-in duration-700">
           <div class="flex items-center gap-2 mb-6">
             <div class="h-2 w-2 bg-emerald-500 rounded-full animate-ping"></div>
@@ -393,9 +393,9 @@
             }
           </div>
         </div>
-      } @else if (state() === 'error') {
+      } @else if (orchestrator.state() === 'error') {
         <div class="bg-red-950/20 border border-red-900/50 p-6 rounded-lg text-red-400 text-center">
-          {{ errorMessage() }}
+          {{ orchestrator.errorMessage() }}
         </div>
       }
 
