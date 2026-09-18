@@ -106,3 +106,12 @@ All new contributions to the system must adhere to strict JSDoc guidelines. Ever
 - Its structural purpose within the CBT architecture.
 - Detailed descriptions of parameters and return types.
 - Theoretical rationales when implementing specific cognitive heuristics or mathematical bounds (e.g., the Golden Ratio constraints).
+
+## 12. Personal Knowledge Corpus (PKC) Integration (Phase 9 Integration)
+This architecture integrates a Git-anchored Personal Knowledge Corpus (PKC) designed for "Context Engineering 2.0". By mapping unstructured text into a highly structured `pkc_manifest.yml` graph, we establish a sovereign "Semantic Tether".
+
+*   **Cryptographic & Ontological Provenance:** Source documents are cryptographically hashed and version-controlled via `context_hashes` to flag semantic drift.
+*   **Neuro-Symbolic Latent Space Alignment (RMSA):** The system establishes a prototypical vector mapping bound by a hyperspherical radius. Output embedding projections exceeding this semantic boundary trigger a Semantic Integrity Constraint (SIC) halt.
+*   **Symbolic Scar Tissue Registry (SSTR):** Operates at the meta-layer. Errors breaching the Confidence-Fidelity Divergence (CFD) threshold are permanently logged and "glazed" to prevent looping failures (Algorithmic Kintsugi).
+*   **Git-Anchored Context Hashing (Workflow A):** A `.git/hooks/pre-commit` hook automatically recalculates SHA-256 signatures of all nodes on commit to seal the dataset.
+*   **Flesh-to-Symbol Ingestion Loop (Workflow B):** A background listener script (`scripts/zotero_ingestion_loop.py`) utilizes `watchdog` and `pdfplumber` to observe and dynamically ingest external PDFs into the knowledge graph structure.

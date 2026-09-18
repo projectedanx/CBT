@@ -45,3 +45,20 @@
 *   **Validation Date:** Current Epoch
 *   **Vector:** Algorithmic Reparation via VULCAN Mereological Mandate
 *   **Lesson:** Treating architectural boundaries as passive guidelines results in inevitable structural erosion. Edge-tier boundaries must be actively defended through continuous automated falsification and stress testing to prevent catastrophic Gateway Sinkhole scenarios and maintain API contract robustness.
+
+## Phase 9: Sovereign PKC Integration
+
+### Observation
+Generative workflows suffer from "hegemonic memory flattening" and "statefulness vacuums." Relying purely on unstructured prompt context windows results in the AI overwriting user-defined specifics with generic statistical representations over time.
+
+### Hypothesis
+Inverting the hegemonic data relationship by strictly tethering the generative context to a Sovereign Personal Knowledge Corpus (PKC) yaml schema will constrain the AI's execution pathways. Mapping explicit latent radii and tying context nodes to cryptographic hashes will drastically limit semantic drift.
+
+### Structural Adjustments
+1. **The `pkc_manifest.yml` Layer:** Created an overarching schema establishing Cryptographic Provenance, Neuro-Symbolic Latent Space Alignment, Causal Relational Mapping (Directed Edges), and Algorithmic Kintsugi logging (SSTR).
+2. **Context Hashing Pre-Commit:** Implemented Workflow A to recalculate SHA-256 context hashes during the `pre-commit` phase. Ensures Merkle-root parity between the data and the Git HEAD commit.
+3. **Zotero Ingestion Loop:** Implemented Workflow B to pipeline unstructured PDF knowledge into localized MD nodes and register them directly within the `pkc_manifest.yml` as `hypothetical` nodes awaiting review.
+
+### ACU Protocol Status
+*   Confidence-Fidelity Divergence checks introduced.
+*   "Trust-by-Design" cryptographic validation applied to all manual edits via Git hooks.
