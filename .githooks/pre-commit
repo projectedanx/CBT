@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+import os
+import hashlib
+import yaml
+
+# Parse our personal knowledge corpus manifest
+manifest_path = "pkc_manifest.yml"
+with open(manifest_path, 'r') as f:
+    manifest = yaml.safe_load(f)
+
+# Automatically scan files and update context_hashes
+updated_hashes = []
+for node in manifest.get('content_nodes', []):
+    file_path = node.get('content_path')
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as f:
+            sha256 = hashlib.sha256(f.read()).hexdigest()
+        updated_hashes.append(f"{file_path}:sha256-{sha256}")
+
+# Write the updated hashes back to the manifest metadata
+manifest['metadata']['context_hashes'] = updated_hashes
+with open(manifest_path, 'w') as f:
+    yaml.safe_dump(manifest, f, default_flow_style=False)
+
+print("[SUCCESS] PKC Context Hashes successfully recalculated and sealed.")
