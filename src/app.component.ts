@@ -3,6 +3,9 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { GeminiService } from './services/gemini.service';
 import { SymbioticTensorMesh } from './services/tensor-mesh.service';
+import { HistoryService } from './services/history.service';
+import { CognitiveOrchestratorService } from './services/cognitive-orchestrator.service';
+
 import { ConceptGraphComponent } from './components/concept-graph.component';
 import { AppState, GenericSpaceResult, BlendResult, BlendedConcept, GraphData, ConceptNode, ConceptLink, HistoryItem, EpistemicOverride, PluriversalLens, StakeholderDissonance } from './types';
 
@@ -18,39 +21,31 @@ import { AppState, GenericSpaceResult, BlendResult, BlendedConcept, GraphData, C
 })
 export class AppComponent {
   /** Reference to the cognitive engine handling external Gemini API synthesis. */
-  private gemini = inject(GeminiService);
+  public orchestrator = inject(CognitiveOrchestratorService);
+  public historyService = inject(HistoryService);
   private tensorMesh = inject(SymbioticTensorMesh);
 
   /** Represents the current phase of the cognitive processing loop. */
-  state = signal<AppState>('idle');
   /** Form control representing the first input conceptual domain (Space Alpha). */
   conceptA = new FormControl('Mycelium Network', [Validators.required]);
   /** Form control representing the second input conceptual domain (Space Beta). */
   conceptB = new FormControl('Corporate Hierarchy', [Validators.required]);
+  notification = signal<string | null>(null);
   
   /** The specific cognitive strategy applied to force the convergence of disparate domains. */
-  blendType = signal<'composition' | 'completion' | 'elaboration'>('composition');
   
   /** The thermodynamic variance applied to the generator. Higher means more entropy/novelty. */
-  temperature = signal<number>(0.8);
   /** The sampling restraint threshold governing token generation variance. */
-  topK = signal<number>(40);
   /** Flag to toggle visibility of advanced cognitive constraints. */
   showSettings = signal<boolean>(false);
   
   /** Signal holding the extracted structural commonalities between domains. */
-  genericSpace = signal<GenericSpaceResult | null>(null);
   /** Signal holding the resulting conceptual artifacts from the blending phase. */
-  blendResult = signal<BlendResult | null>(null);
   /** Volatile signal capturing critical failures in the cognitive engine. */
-  errorMessage = signal<string | null>(null);
   /** Volatile signal providing transient feedback on ledger or mutation actions. */
-  notification = signal<string | null>(null);
   
   /** The local temporal archive storing previously generated operations. */
-  history = signal<HistoryItem[]>([]);
   /** Pointer to the specific historical artifact currently loaded into the context window. */
-  currentHistoryItemId = signal<string | null>(null);
 
   /** Tracks which blend is currently being annotated with a Golden Scar. */
 
@@ -64,14 +59,7 @@ export class AppComponent {
    * Bootstraps the primary controller and attempts to rehydrate the temporal archive from local storage.
    */
   constructor() {
-    const saved = localStorage.getItem('cbt_history');
-    if (saved) {
-      try {
-        this.history.set(JSON.parse(saved));
-      } catch (e) {
-        console.error('Failed to parse history', e);
-      }
-    }
+
   }
 
   /**
@@ -84,8 +72,8 @@ export class AppComponent {
     
     const cA = this.conceptA.value;
     const cB = this.conceptB.value;
-    const gs = this.genericSpace();
-    const br = this.blendResult();
+    const gs = this.orchestrator.genericSpace();
+    const br = this.orchestrator.blendResult();
 
     if (!cA || !cB) return { nodes: [], links: [] };
 
@@ -141,7 +129,7 @@ export class AppComponent {
    */
   updateTemperature(event: Event) {
     const val = parseFloat((event.target as HTMLInputElement).value);
-    this.temperature.set(val);
+    this.orchestrator.temperature.set(val);
   }
 
   /**
@@ -150,7 +138,7 @@ export class AppComponent {
    */
   updateTopK(event: Event) {
     const val = parseInt((event.target as HTMLInputElement).value, 10);
-    this.topK.set(val);
+    this.orchestrator.topK.set(val);
   }
 
   /**
@@ -158,134 +146,36 @@ export class AppComponent {
    * On successful structural extraction, automatically delegates to Phase 2 (Synthesis).
    * @returns {Promise<void>}
    */
+
   async startAnalysis() {
     if (this.conceptA.invalid || this.conceptB.invalid) return;
-    
-    this.state.set('analyzing');
-    this.errorMessage.set(null);
-    this.genericSpace.set(null);
-    this.blendResult.set(null);
-    this.currentHistoryItemId.set(null);
-
-    try {
-      const resultA = await this.gemini.analyzeGenericSpace(this.conceptA.value!, this.conceptB.value!);
-      this.genericSpace.set(resultA);
-      
-      await this.performBlend();
-      
-    } catch (e) {
-      this.state.set('error');
-      this.errorMessage.set('Analysis failed. The alchemist could not stabilize the inputs.');
-      console.error(e);
-    }
+    await this.orchestrator.startAnalysis(this.conceptA.value!, this.conceptB.value!);
   }
 
-  /**
-   * Executes Phase 2 of the loop: Conceptual Blend Synthesis based on the established Generic Space mapping.
-   * Archives the resultant operation to the temporal ledger on completion.
-   * @returns {Promise<void>}
-   */
+
   async performBlend() {
-    const gs = this.genericSpace();
-    if (!gs) return;
-
-    this.state.set('blending');
-    const currentType = this.blendType();
-
-    try {
-      const resultB = await this.gemini.runConceptualBlend(
-        this.conceptA.value!,
-        this.conceptB.value!,
-        gs,
-        currentType,
-        this.temperature(),
-        this.topK()
-      );
-      this.blendResult.set(resultB);
-      this.state.set('complete');
-      this.addToHistory(resultB, gs, currentType);
-    } catch (e) {
-      this.state.set('error');
-      this.errorMessage.set('Blending synthesis failed.');
-      console.error(e);
-    }
+    await this.orchestrator.performBlend(this.conceptA.value!, this.conceptB.value!);
   }
 
-  /**
-   * Mutates the cognitive blending strategy directive. Re-triggers synthesis if a valid mapping exists.
-   * @param {'composition' | 'completion' | 'elaboration'} type - The newly selected cognitive focus.
-   */
+
   setBlendType(type: 'composition' | 'completion' | 'elaboration') {
-    this.blendType.set(type);
-    if (this.genericSpace()) {
-      this.performBlend();
-    }
+    this.orchestrator.setBlendType(type, this.conceptA.value!, this.conceptB.value!);
   }
 
-  /**
-   * Purges the volatile active context window, returning the controller to an idle baseline.
-   */
+
   reset() {
-    this.state.set('idle');
-    this.genericSpace.set(null);
-    this.blendResult.set(null);
-    this.currentHistoryItemId.set(null);
+    this.orchestrator.reset();
   }
 
-  /**
-   * Promotes a specific generated artifact into a specialized, manually preserved historical record.
-   * @param {BlendedConcept} blend - The specific artifact to archive permanently.
-   */
+
   saveBlend(blend: BlendedConcept) {
-    const gs = this.genericSpace();
+    const gs = this.orchestrator.genericSpace();
     if (!gs) return;
-
-    const specificResult: BlendResult = {
-      analysis: `Archived Artifact: ${blend.name}`,
-      blends: [blend]
-    };
-
-    const newItem: HistoryItem = {
-      id: Math.random().toString(36).substring(2, 9),
-      timestamp: Date.now(),
-      conceptA: this.conceptA.value!,
-      conceptB: this.conceptB.value!,
-      genericSpace: gs,
-      blendResult: specificResult,
-      blendType: this.blendType(),
-      isManualSave: true
-    };
-
-    this.history.update(h => [newItem, ...h].slice(0, 30));
-    this.persistHistory();
-
+    this.historyService.saveBlend(blend, this.conceptA.value!, this.conceptB.value!, gs, this.orchestrator.blendType());
     this.notification.set(`Artifact "${blend.name}" successfully archived.`);
     setTimeout(() => this.notification.set(null), 3000);
   }
 
-  /**
-   * Mutates the user-feedback tensor for a specific generated concept, updating both volatile memory and persistent history.
-   * @param {BlendedConcept} blend - The generated artifact receiving feedback.
-   * @param {'like' | 'dislike'} rating - The binary sentiment value.
-   */
-
-  /**
-   * Injects a deterministic human contradiction (Epistemic Override) into a probabilistic artifact.
-   * This physicalizes the Golden Scar Protocol, resolving Algorithmic Shame by holding tension.
-   *
-   * [PARACONSISTENT LOGIC ENFORCEMENT]
-   * Ensures the resulting epistemic override operates within the ϵ-band of computational superposition.
-   * Treats the architectural state simultaneously as Boundary, Interior, and Exterior.
-   *
-   * @param {BlendedConcept} blend - The artifact receiving the override.
-   * @param {string} annotation - The deterministic human judgment.
-   * @param {number} score - The Contradiction Retention Score (0-100), bounded to maintain ∣∇d∣=1.
-   */
-
-  /**
-   * Injects Stakeholder Dissonance using a selected Pluriversal Lens.
-   * Modifies the UI and stores the S5-Modal Attention topological derivative.
-   */
   injectStakeholderDissonance(blend: BlendedConcept, lens: string, tensionScore: number) {
     const topoDerivative = this.tensorMesh.calculateTopologicalDerivative(tensionScore);
     const dissonance: StakeholderDissonance = {
@@ -294,12 +184,12 @@ export class AppComponent {
       topologicalDerivative: topoDerivative
     };
 
-    const currentResult = this.blendResult();
+    const currentResult = this.orchestrator.blendResult();
     if (currentResult) {
       const updatedBlends = currentResult.blends.map(b =>
         b.name === blend.name ? { ...b, stakeholderDissonance: dissonance } : b
       );
-      this.blendResult.set({ ...currentResult, blends: updatedBlends });
+      this.orchestrator.blendResult.set({ ...currentResult, blends: updatedBlends });
     }
     this.activeDissonanceBlend.set(null);
   }
@@ -311,17 +201,17 @@ export class AppComponent {
       timestamp: Date.now()
     };
 
-    const currentResult = this.blendResult();
+    const currentResult = this.orchestrator.blendResult();
     if (currentResult) {
       const updatedBlends = currentResult.blends.map(b =>
         b.name === blend.name ? { ...b, epistemicOverride: override } : b
       );
-      this.blendResult.set({ ...currentResult, blends: updatedBlends });
+      this.orchestrator.blendResult.set({ ...currentResult, blends: updatedBlends });
     }
 
-    const currentId = this.currentHistoryItemId();
+    const currentId = this.historyService.currentHistoryItemId();
     if (currentId) {
-      this.history.update(items => items.map(item => {
+      this.historyService.history.update(items => items.map(item => {
         if (item.id === currentId) {
           const updatedBlends = item.blendResult.blends.map(b =>
             b.name === blend.name ? { ...b, epistemicOverride: override } : b
@@ -336,7 +226,7 @@ export class AppComponent {
         }
         return item;
       }));
-      this.persistHistory();
+      this.historyService.persistHistory();
     }
 
     this.activeOverrideBlend.set(null);
@@ -347,17 +237,17 @@ export class AppComponent {
   rateBlend(blend: BlendedConcept, rating: 'like' | 'dislike') {
     const newRating = blend.userRating === rating ? undefined : rating;
     
-    const currentResult = this.blendResult();
+    const currentResult = this.orchestrator.blendResult();
     if (currentResult) {
       const updatedBlends = currentResult.blends.map(b => 
         b.name === blend.name ? { ...b, userRating: newRating } : b
       );
-      this.blendResult.set({ ...currentResult, blends: updatedBlends });
+      this.orchestrator.blendResult.set({ ...currentResult, blends: updatedBlends });
     }
 
-    const currentId = this.currentHistoryItemId();
+    const currentId = this.historyService.currentHistoryItemId();
     if (currentId) {
-      this.history.update(items => items.map(item => {
+      this.historyService.history.update(items => items.map(item => {
         if (item.id === currentId) {
           const updatedBlends = item.blendResult.blends.map(b => 
             b.name === blend.name ? { ...b, userRating: newRating } : b
@@ -372,7 +262,7 @@ export class AppComponent {
         }
         return item;
       }));
-      this.persistHistory();
+      this.historyService.persistHistory();
     }
   }
 
@@ -401,54 +291,21 @@ export class AppComponent {
    * @param {GenericSpaceResult} generic - The abstract topology linking the inputs.
    * @param {'composition' | 'completion' | 'elaboration'} type - The methodological constraint used.
    */
-  private addToHistory(
-    result: BlendResult, 
-    generic: GenericSpaceResult, 
-    type: 'composition' | 'completion' | 'elaboration'
-  ) {
-    const id = Math.random().toString(36).substring(2, 9);
-    const newItem: HistoryItem = {
-      id,
-      timestamp: Date.now(),
-      conceptA: this.conceptA.value!,
-      conceptB: this.conceptB.value!,
-      genericSpace: generic,
-      blendResult: result,
-      blendType: type
-    };
 
-    this.currentHistoryItemId.set(id);
-    this.history.update(h => [newItem, ...h].slice(0, 30));
-    this.persistHistory();
-  }
 
-  /**
-   * Rehydrates a preserved historical record back into the active context window.
-   * @param {HistoryItem} item - The temporal ledger entry to load.
-   */
   loadHistory(item: HistoryItem) {
-    this.state.set('complete'); 
+    this.orchestrator.state.set('complete');
     this.conceptA.setValue(item.conceptA);
     this.conceptB.setValue(item.conceptB);
-    this.blendType.set(item.blendType);
-    this.genericSpace.set(item.genericSpace);
-    this.blendResult.set(item.blendResult);
-    this.currentHistoryItemId.set(item.id);
+    this.orchestrator.blendType.set(item.blendType);
+    this.orchestrator.genericSpace.set(item.genericSpace);
+    this.orchestrator.blendResult.set(item.blendResult);
+    this.historyService.currentHistoryItemId.set(item.id);
   }
 
-  /**
-   * Irreversibly purges the temporal ledger from local storage and volatile memory.
-   */
+
   clearHistory() {
-    this.history.set([]);
-    this.persistHistory();
-    this.currentHistoryItemId.set(null);
+    this.historyService.clearHistory();
   }
 
-  /**
-   * Flushes volatile ledger structures into static browser storage.
-   */
-  private persistHistory() {
-    localStorage.setItem('cbt_history', JSON.stringify(this.history()));
-  }
 }
