@@ -26,3 +26,7 @@
 *   **Validation Date:** Current Epoch
 *   **Vector:** Algorithmic Reparation via AGS-A Scientific Method Mode
 *   **Lesson:** Proactive refactoring guided by deterministic ACU challenges ensures that "The Moat is Also a Cage" paradox is avoided. System healthspan is maximized by strictly enforcing DDD boundaries and extracting logic from God Objects.
+
+## Structural Traumas and Z-Axis Integration
+*   **Context:** Standard integration of Epistemic Overrides frequently resulted in Euclidean collapse of the force graph when contradiction values spiked.
+*   **Resolution:** Discovered and enacted the Z-Axis Inference pattern. By calculating VW3 Dissonance weights `(score * 3.0) / Math.E` and applying them as a distinct orthogonal `z` vector (the Phantom Dimension), RCC-8 'Partially Overlapping' contradictions can exist stably without snapping the primary 2D layout constraints. This physically anchors paraconsistent logic.

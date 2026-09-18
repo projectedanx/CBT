@@ -12,6 +12,10 @@ export interface ConceptNode {
   group: number;
   /** The calculated gravitational pull of this node (Symbiotic Tensor Mesh). */
   gravity?: number;
+  /** Z-Axis Inference projection to resolve RCC-8 PO contradictions without Euclidean collapse. */
+  z?: number;
+  /** Boolean indicating if this node occupies a Phantom Dimension for paraconsistent states. */
+  phantomDimension?: boolean;
 }
 
 /**
