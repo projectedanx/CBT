@@ -139,3 +139,80 @@ export interface HistoryItem {
   /** Indicates whether this record was explicitly preserved by the user. */
   isManualSave?: boolean;
 }
+
+/**
+ * PHASE 1: GEOMETRIC COGNITION - Unified Meta-Prompting API
+ */
+
+/**
+ * Defines the high-level geometric topology of the latent space.
+ */
+export type SceneTopology = 'hyperbolic_dodecahedron_space' | 'elliptic_manifold' | 'spherical_geometry' | 'riemannian_manifold' | 'euclidean_baseline';
+
+/**
+ * Modulators representing abstract geometric concepts in the latent space.
+ */
+export interface PhantomDimensions {
+  /** The degree of Gaussian curvature applied to the latent space. */
+  gaussCurvature: number;
+  /** The degree of Riemannian curvature applied to the latent space. */
+  riemannianCurvature: number;
+  /** Parameters defining the shortest path curves (geodesics) on the manifold. */
+  geodesicMapping: string;
+}
+
+/**
+ * Directives that directly influence the underlying mathematical structure of the latent space.
+ */
+export interface GeometricDirective {
+  /** High-level definition of the manifold's topology. */
+  topology: SceneTopology;
+  /** Granular parameter adjustments to simulate non-Euclidean metrics. */
+  phantomDimensions: PhantomDimensions;
+}
+
+/**
+ * PHASE 2: AGENTIC AUTO-OPTIMIZATION & PROVENANCE
+ */
+
+/**
+ * Quantitative metrics fed back from the Plausibility Oracle (mocked PBR/ray-tracing validation).
+ */
+export interface PlausibilityOracleMetrics {
+  /** Structural Similarity Index Measure for physical adherence. */
+  ssim: number;
+  /** Peak Signal-to-Noise Ratio. */
+  psnr: number;
+  /** Universal Image Quality Index. */
+  uiqi: number;
+}
+
+/**
+ * Tracks the influence of training data samples to quantify bias and enable ethical debiasing.
+ */
+export interface ProvenanceTrail {
+  /** Identifier of the conceptual lineage or training data cluster. */
+  lineageId: string;
+  /** Quantified influence of this lineage on the current generation (0-1). */
+  influenceWeight: number;
+  /** Indication of semantic drift divergence. */
+  semanticDriftDelta: number;
+}
+
+/**
+ * PHASE 3: CROSS-MODAL PERCEPTUAL FUSION
+ */
+
+/**
+ * Parameters for explicitly integrating Multispectral Imaging (MSI) data to target Quantum Dot displays.
+ */
+export interface MSIParameters {
+  /** Configuration for purer monochromatic red light emission. */
+  monochromaticRedIntensity: number;
+  /** Configuration for purer monochromatic green light emission. */
+  monochromaticGreenIntensity: number;
+  /** Configuration for purer monochromatic blue light emission. */
+  monochromaticBlueIntensity: number;
+  /** Target hardware profile for perceptual fidelity optimization. */
+  targetHardwareProfile: 'quantum_dot' | 'standard_rgb' | 'hdr10';
+}
