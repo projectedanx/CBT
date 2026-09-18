@@ -299,6 +299,56 @@
                   }
                 </div>
 
+
+                <!-- Stakeholder Dissonance Matrix -->
+                <div class="mt-4 border-t border-slate-800 pt-3">
+                  @if (blend.stakeholderDissonance) {
+                    <div class="bg-indigo-900/20 border-l-2 border-indigo-500 p-3 rounded-r relative overflow-hidden group/scar">
+                      <div class="flex justify-between items-start mb-1">
+                        <span class="text-xs font-bold text-indigo-500 uppercase tracking-widest flex items-center gap-1">
+                          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1h1a2 2 0 012 2v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-1v1a1 1 0 11-2 0v-1H8v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V7a2 2 0 012-2h1V3a1 1 0 011-1h1z" clip-rule="evenodd"></path></svg>
+                          Dissonance: {{ blend.stakeholderDissonance.lens }}
+                        </span>
+                        <span class="text-[10px] bg-indigo-500/20 text-indigo-300 px-1.5 py-0.5 rounded" title="Topological Derivative">
+                          ∇D: {{ blend.stakeholderDissonance.topologicalDerivative | number:'1.2-4' }}
+                        </span>
+                      </div>
+                      <div class="flex justify-between text-[10px] text-slate-400 mt-2">
+                        <span>Tension Score: {{ blend.stakeholderDissonance.tensionScore }}</span>
+                        <span>S5-Modal Force Applied</span>
+                      </div>
+                    </div>
+                  } @else {
+                    @if (activeDissonanceBlend() === blend.name) {
+                      <div class="bg-slate-900 border border-indigo-500/50 p-3 rounded">
+                        <div class="text-xs text-indigo-500 font-bold uppercase mb-2">Inject Stakeholder Dissonance</div>
+
+                        <select #lensSelect class="w-full bg-slate-950 border border-slate-700 text-slate-300 text-xs p-2 rounded focus:border-indigo-500 focus:outline-none mb-2 appearance-none">
+                           <option value="" disabled selected>Select Pluriversal Lens</option>
+                           @for (lens of pluriversalLenses; track lens) {
+                              <option [value]="lens">{{ lens.replace('_', ' ') }}</option>
+                           }
+                        </select>
+
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                          <label class="text-[10px] text-slate-400 uppercase">Tension Score:</label>
+                          <input #tensionInput type="range" min="0" max="100" value="70" class="flex-1 accent-indigo-500 h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                        </div>
+
+                        <div class="flex justify-end gap-2">
+                           <button (click)="activeDissonanceBlend.set(null)" class="text-[10px] text-slate-400 hover:text-slate-200 uppercase px-2 py-1">Cancel</button>
+                           <button (click)="injectStakeholderDissonance(blend, lensSelect.value, tensionInput.valueAsNumber)" class="text-[10px] bg-indigo-600 hover:bg-indigo-500 text-slate-900 font-bold uppercase px-3 py-1 rounded transition-colors" [disabled]="!lensSelect.value">Apply Lens</button>
+                        </div>
+                      </div>
+                    } @else {
+                      <button (click)="activeDissonanceBlend.set(blend.name)" class="w-full flex items-center justify-center gap-2 py-1.5 mt-2 bg-slate-900/50 border border-slate-700 hover:border-indigo-500/50 hover:text-indigo-400 text-[10px] text-slate-500 rounded transition-colors uppercase tracking-wide border-dashed">
+                          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                          Inject Stakeholder Dissonance
+                      </button>
+                    }
+                  }
+                </div>
+
                 <!-- Action Buttons: Rating & Save -->
                 <div class="mt-4 flex justify-between items-center pt-2">
                    <!-- Rating -->
