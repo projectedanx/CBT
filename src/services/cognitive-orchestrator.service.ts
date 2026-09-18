@@ -1,5 +1,6 @@
 import { Injectable, signal, WritableSignal, inject } from '@angular/core';
 import { ReflexiveRepairLoopService } from './reflexive-repair-loop.service';
+import { RheologicalControllerService } from './rheological-controller.service';
 import { SemanticIntegrityConstraint, LogicViolationReport } from '../types';
 import { GeminiService } from './gemini.service';
 import { HistoryService } from './history.service';
@@ -18,6 +19,8 @@ export class CognitiveOrchestratorService {
   /** The injected History service used for maintaining temporal ledgers. */
   private historyService = inject(HistoryService);
   private repairLoop = inject(ReflexiveRepairLoopService);
+  /** The Layer-1 Rheological Mode Switcher for dynamic viscosity control. */
+  public rheology = inject(RheologicalControllerService);
 
   /** Represents the current phase of the cognitive processing loop. */
   state: WritableSignal<AppState> = signal('idle');
@@ -31,10 +34,6 @@ export class CognitiveOrchestratorService {
 
   /** The operative blending strategy. */
   blendType: WritableSignal<'composition' | 'completion' | 'elaboration'> = signal('composition');
-  /** Variance parameter for generation. */
-  temperature: WritableSignal<number> = signal(0.8);
-  /** Distribution limit for generation. */
-  topK: WritableSignal<number> = signal(40);
 
   /**
    * Triggers the primary Petzold Loop. Begins Phase 1: Mapping the Generic Space.
@@ -91,13 +90,16 @@ export class CognitiveOrchestratorService {
 
       const generatorFn = async (lvr?: LogicViolationReport) => {
          // In a real system, the LVR would be injected into the prompt via F-IPI
+         // Rheological state enforces constraints
+         const rState = this.rheology.currentState();
          return await this.gemini.runConceptualBlend(
             conceptA,
             conceptB,
             gs,
             currentType,
-            this.temperature(),
-            this.topK()
+            rState.temperature,
+            // Approximating topK via topP logic from RheologicalState (using 40 as base and scaling down for crystal)
+            rState.mode === 'CRYSTAL' ? 10 : 40
          );
       };
 

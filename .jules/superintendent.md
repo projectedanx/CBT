@@ -20,3 +20,16 @@ JOURNAL: Committing modifications to establish the Semantic Firewall and Symboli
 <final_output>
 The Reflexive Repair Loop architecture has been physically instantiated within the codebase. The `ReflexiveRepairLoopService` enforces deterministic validation, bound to a maximum of 3 iterations via the Loop Constraint. Epistemic Escrow mechanisms are active and will halt execution upon unresolved Semantic Integrity Constraint violations. All requisite documentation (`ADR 15`, `README.md`, `ROADMAP.md`, `LESSONS_LEARNED.md`, `pkc_manifest.yml`, `types.ts`) has been aligned to the state of the system in compliance with the AXIOM v1.0 and VULCAN mandates.
 </final_output>
+<thinking>
+DISCOVER: The system required deterministic execution boundaries over generative processes, mitigating Semantic Saponification and Interpretive Fracture via Variable Viscosity Prompting (VVP).
+CLASSIFY: Core Architectural Addition. Implementing a Rheological Controller (RMS) and Epistemic Composting protocols via `RheologicalControllerService`.
+VERIFY: Constructed `src/services/rheological-controller.service.ts` providing CRYSTAL and CLOUD states. Modified `CognitiveOrchestratorService` to inject this controller. Replaced explicit temperature/topK parameters in `app.component.html` and `types.ts` with explicit Rheological Modes. Authored ADR-16. Validated compilation using `npm run build`. Recalculated context hashes via `.githooks/pre-commit`.
+JOURNAL: Committing modifications to establish Variable Viscosity Prompting. Rheological integrity verified.
+</thinking>
+<final_output>
+- Added `RheologicalControllerService` (RMS).
+- Updated `CognitiveOrchestratorService` to utilize the RMS.
+- Updated `types.ts`, `app.component.ts`, and `app.component.html` to physicalize the Rheological Modes.
+- Add `docs/adr/16-rheological-controller.md` (Arc42 ADR).
+- Updated `README.md`, `ROADMAP.md`, `LESSONS_LEARNED.md`, and `pkc_manifest.yml`.
+</final_output>

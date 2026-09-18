@@ -14,6 +14,7 @@ This application is not a chatbot. It is a **Constitutional Architecture** desig
     *   *Composition:* Direct combination of elements.
     *   *Completion:* Invoking background frames to fill patterns.
     *   *Elaboration:* Mental simulation of the blend in motion.
+*   **Rheological Controller (VVP):** A Layer-1 meta-architectural component that controls the "viscosity" (entropy) of the model's generation, seamlessly switching between strict `CRYSTAL` mode and exploratory `CLOUD` mode.
 *   **Temporal Archives:** Local-storage based history of previous blends with "Artifact Preservation" (Save) functionality.
 *   **Feedback Loops:** User rating system to reinforce high-quality blends.
 

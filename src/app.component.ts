@@ -140,23 +140,7 @@ export class AppComponent {
     this.showSettings.update(v => !v);
   }
 
-  /**
-   * Intercepts DOM range input events to mutate the engine's temperature.
-   * @param {Event} event - The raw DOM input event.
-   */
-  updateTemperature(event: Event) {
-    const val = parseFloat((event.target as HTMLInputElement).value);
-    this.orchestrator.temperature.set(val);
-  }
 
-  /**
-   * Intercepts DOM range input events to mutate the engine's Top-K limit.
-   * @param {Event} event - The raw DOM input event.
-   */
-  updateTopK(event: Event) {
-    const val = parseInt((event.target as HTMLInputElement).value, 10);
-    this.orchestrator.topK.set(val);
-  }
 
   /**
    * Triggers the primary Petzold Loop. Begins Phase 1: Mapping the Generic Space.

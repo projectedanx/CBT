@@ -260,3 +260,31 @@ export interface SymbolicScar {
     failure_utility_loss_tokens: number;
   };
 }
+
+
+/**
+ * Represents the fundamental operational modes of the Rheological Controller.
+ */
+export type RheologicalMode = 'CRYSTAL' | 'CLOUD';
+
+/**
+ * Encapsulates the physical configuration of a rheological state.
+ */
+export interface RheologicalState {
+  mode: RheologicalMode;
+  temperature: number;
+  topP: number;
+  adjectivalBound: number;
+  pydanticSchemaEnforcement: boolean;
+  saltedTags?: [string, string];
+  structuralRedundancyRatio?: number;
+}
+
+/**
+ * Telemetry metrics for monitoring semantic entropy and topological boundaries.
+ */
+export interface TelemetryMetrics {
+  semanticSaponificationIndex: number;
+  confidenceFidelityDivergenceIndex: number;
+  betti1PersistentLoops: number;
+}
