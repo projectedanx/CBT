@@ -47,7 +47,7 @@ jobs:
           python -m py_compile $(find . -name "*.py")
 
       - name: "Supply Chain Vulnerability & Smell Scan"
-        uses: chains-project/dirty-waters-action@646f905fb28a3648a86a60e0a3b2b2c3d479e054 # Pin: dirty-waters@v1
+        uses: chains-project/dirty-waters-action@d259ec680f2cf63a8ddf5a12491252a021ae6cdf # Pin: dirty-waters@v1
         with:
           target_ecosystem: "npm"
           fail_on_smell: "Aliased, No_Provenance, Invalid_Signature" # Fails on unverified packages
