@@ -115,6 +115,13 @@ All new contributions to the system must adhere to strict JSDoc guidelines. Ever
 - Detailed descriptions of parameters and return types.
 - Theoretical rationales when implementing specific cognitive heuristics or mathematical bounds (e.g., the Golden Ratio constraints).
 
+## 12.5 Staged Advantage Estimation (SAE)
+To preserve structural contrast and stabilize advantage variance during Tree-structured Off-policy Optimization (Tree-OPO), the system integrates a Staged Advantage Estimation (SAE) module (`scripts/sae`).
+*   **Adaptive Spectral Solver:** Interpolates between $V_E(p)$ heuristics and formal QP projection based on spectral radius.
+*   **ADMM Projector:** Lock-free, background Alternating Direction Method of Multipliers (ADMM) solver for convex constraints without blocking GPU threads.
+*   **EWAR Harness:** Entropy-Weighted Advantage Recovery to actively detect and mitigate Semantic Saponification (variance collapse) by restoring structural contrast.
+For more details, consult `docs/adr/19-staged-advantage-estimation.md`.
+
 ## 13. Personal Knowledge Corpus (PKC) Integration (Phase 9 Integration)
 This architecture integrates a Git-anchored Personal Knowledge Corpus (PKC) designed for "Context Engineering 2.0". By mapping unstructured text into a highly structured `pkc_manifest.yml` graph, we establish a sovereign "Semantic Tether".
 
