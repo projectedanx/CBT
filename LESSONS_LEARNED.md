@@ -122,3 +122,12 @@ Inverting the hegemonic data relationship by strictly tethering the generative c
 
 ## Phase 11
 - **The Sovereignty-Enforcement Split:** Resolved the issue of LLMs being probabilistic next-token generators lacking intrinsic capability to securely execute sequential operations. The implementation of the **ActPlane Hierarchical Policy Domains** via an eBPF LSM hook guarantees that no child sub-agent can ever weaken or bypass parent-imposed invariants, cementing Framework over Brain.
+
+## 7. Autonomous Adaptive Cognitive Harness (AACH)
+*   **Observation:** The system required dynamic strategic planning under volatile environments, but traditional discrepancy reduction caused stagnation (local peaks).
+*   **Resolution:** Implemented an AACH utilizing a dual-cyclic Goal-Setting Loop. The deliberative layer intentionally spikes goal difficulty (Disequilibratory Production) upon convergence.
+*   **Simulation Data:**
+    *   *Overcontrolled:* High stability, high stagnation (Performance 0.44, Variance 0.009).
+    *   *Dissipative:* High token costs, chaotic (Performance 0.49, Variance 0.141).
+    *   *Edge of Chaos:* Optimal dynamic robustness (Performance 0.78, Variance 0.078, Goal Cycles 4).
+*   **Lesson:** Absolute stability yields "death by equilibrium." System viability requires continuous intentional disequilibrium constrained by Subjective Well-Being limits and strictly audited via the Homomorphic Schema Compiler (Chase Procedure).

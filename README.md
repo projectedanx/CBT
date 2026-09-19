@@ -17,6 +17,7 @@ This application is not a chatbot. It is a **Constitutional Architecture** desig
 *   **Rheological Controller (VVP):** A Layer-1 meta-architectural component that controls the "viscosity" (entropy) of the model's generation, seamlessly switching between strict `CRYSTAL` mode and exploratory `CLOUD` mode.
 *   **Temporal Archives:** Local-storage based history of previous blends with "Artifact Preservation" (Save) functionality.
 *   **Feedback Loops:** User rating system to reinforce high-quality blends.
+*   **Autonomous Adaptive Cognitive Harness (AACH):** A three-layer control system (Execution, Deliberative, Metacognitive) utilizing feed-forward goal tuning and Optimal Feedback Control to enforce purposeful adaptation at the "Edge of Chaos".
 
 ## 3. Technical Stack
 *   **Frontend:** Angular 21 (Standalone Components, Signals, Zoneless).
