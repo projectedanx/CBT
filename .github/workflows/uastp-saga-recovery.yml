@@ -49,8 +49,9 @@ jobs:
       - name: "Supply Chain Vulnerability & Smell Scan"
         uses: chains-project/dirty-waters-action@d259ec680f2cf63a8ddf5a12491252a021ae6cdf # Pin: dirty-waters@v1
         with:
-          target_ecosystem: "npm"
-          fail_on_smell: "Aliased, No_Provenance, Invalid_Signature" # Fails on unverified packages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          package_manager: "npm"
+          specified_smells: "Aliased, No_Provenance, Invalid_Signature" # Fails on unverified packages
 
   # ============================================================================
   # MANIFOLD BETA: Stateful Infrastructure Mutation with Paired Compensation
