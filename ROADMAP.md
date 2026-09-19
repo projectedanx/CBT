@@ -56,3 +56,8 @@
 - [x] **Rheological Mode Switcher:** Implemented Layer-1 meta-architectural component for Variable Viscosity Prompting (VVP).
 - [x] **Crystal & Cloud Modes:** Bound UI and Cognitive Orchestrator to explicit Rheological States.
 - [ ] **Dynamic Telemetry Injection:** Connect live CFDI and SSI metrics directly to the `evaluateTelemetry` function for autonomous viscosity cooling.
+
+## Phase 11: ActPlane Integration
+- [x] Formalize the ActPlane Sovereignty-Enforcement Split via Arc42 ADR.
+- [x] Implement the eBPF Kernel Enforcement Engine (C).
+- [x] Implement the Userspace Parent Orchestrator (Python) simulating ring buffer delta submission.

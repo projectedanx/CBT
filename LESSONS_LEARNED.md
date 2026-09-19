@@ -119,3 +119,6 @@ Inverting the hegemonic data relationship by strictly tethering the generative c
    - The THINK/WRITE nodes establish an immutable Linguistic Scaffold via DDx Exclusion.
    - The Reflexion-Helix (CODE/EVALUATE) uses episodic memory to iteratively debug compilation failures within a sandboxed interpreter.
    - The Voyager-Helix (RE-FORGE) extracts successful, zero-error code executions and commits them as C2PA-compliant primitives into the permanent Skill Library, bridging the gap between metacognitive advice (How to Think) and executable artifacts (How to Act).
+
+## Phase 11
+- **The Sovereignty-Enforcement Split:** Resolved the issue of LLMs being probabilistic next-token generators lacking intrinsic capability to securely execute sequential operations. The implementation of the **ActPlane Hierarchical Policy Domains** via an eBPF LSM hook guarantees that no child sub-agent can ever weaken or bypass parent-imposed invariants, cementing Framework over Brain.

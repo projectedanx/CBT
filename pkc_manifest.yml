@@ -40,6 +40,26 @@ content_nodes:
   status: published
   title: Algorithmic Kintsugi Protocols
   version_number: 14
+- content_path: docs/adr/20-actplane-hierarchical-policy-domains.md
+  epistemic_tag: stable
+  meaning_space_anchor:
+    embedding_model: text-embedding-3-small
+    hyperspherical_radius: 0.05
+    prototypical_vector:
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+  metadata_fields:
+    architectural_layer: Governance_Overlay
+    epistemic_risk_level: High
+    implementation_horizon: Production_Ready
+  node_type: Markdown
+  node_uuid: urn:uuid:actplane-adr-20-node-1234
+  status: curated
+  title: ActPlane Hierarchical Policy Domains
+  version_number: 1
 kind: PersonalKnowledgeCorpus
 metadata:
   active_ontology_references:
@@ -48,6 +68,7 @@ metadata:
   context_hashes:
   - pkm/biolux_sdl_framework.md:sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
   - pkm/algorithmic_kintsugi.md:sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - docs/adr/20-actplane-hierarchical-policy-domains.md:sha256-754a68591aed23d9ab7ebaf8ee504a3d249f411aa1beac5dff712630d46cc2dc
   corpus_uuid: urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6
   created_at: '2026-08-27T06:56:58Z'
   last_anchored_commit: commit_sha256_9f83a2b100e451b6239167c...

@@ -130,3 +130,6 @@ This architecture integrates a Git-anchored Personal Knowledge Corpus (PKC) desi
 *   **Symbolic Scar Tissue Registry (SSTR):** Operates at the meta-layer. Errors breaching the Confidence-Fidelity Divergence (CFD) threshold are permanently logged and "glazed" to prevent looping failures (Algorithmic Kintsugi).
 *   **Git-Anchored Context Hashing (Workflow A):** A `.git/hooks/pre-commit` hook automatically recalculates SHA-256 signatures of all nodes on commit to seal the dataset.
 *   **Flesh-to-Symbol Ingestion Loop (Workflow B):** A background listener script (`scripts/zotero_ingestion_loop.py`) utilizes `watchdog` and `pdfplumber` to observe and dynamically ingest external PDFs into the knowledge graph structure.
+
+### ActPlane Sovereign Domain Architecture
+The system enforces the **ActPlane Sovereignty-Enforcement Split** using **Hierarchical Policy Domains**. By nesting security boundaries within the process tree and enforcing them natively via an eBPF Kernel Enforcement Engine, the architecture guarantees that no downstream sub-agent can bypass parent-imposed invariants. The harness acts as the operating system for cognitive workloads, utilizing monotonic label propagation (IFC) and maintaining execution reliability.
