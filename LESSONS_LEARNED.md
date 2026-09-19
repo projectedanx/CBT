@@ -90,3 +90,8 @@ Inverting the hegemonic data relationship by strictly tethering the generative c
 *   **Validation Date:** Current Epoch
 *   **Vector:** Real-time generation stabilization via VCP Guard Loop.
 *   **Lesson:** Treating logical safety limits as continuous, differentiable potentials (via the DLM) allows non-destructive, sub-token interventions, preserving affective latent space homeostasis (ALSH) while preventing Epistemic Escrow tripping.
+
+### Phase 11: JIT Swarm Orchestration & Execution Metrology
+*   **The Tooling Context Consumption Tax:** Embedding large OpenAPI definitions within the primary reasoning loop consumes up to 50% of the active context window. We must isolate this tax using Ephemeral JIT Micro-Agents (Manifold Beta).
+*   **The Projection Tax:** Forcing large parameter models to simultaneously calculate strategic plans and format strict JSON schemas degrades deductive capabilities by 10% to 30%. Utilizing Draft-Conditioned Constrained Decoding (DCCD) projects high-entropy semantic vectors into zero-entropy schemas without internal processing decay.
+*   **Algorithmic Shame Tracking:** Incorporating the Confidence-Fidelity Divergence Index (CFDI) is vital. Breaches >= 0.15 indicate a severe divergence, necessitating the Verification Co-Processor to inject Differentiable Cache Augmentations rather than discarding the trajectory entirely.

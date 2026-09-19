@@ -1,0 +1,30 @@
+{
+  "@context": "https://scos.org/contexts/epistemic-escrow.jsonld",
+  "@type": "JustifiedUncertaintyReport",
+  "jur_id": "40598ff9-c23c-40b2-a009-136d33e0466a",
+  "cxb_trace_id": "e66e5232-9481-4a85-96b0-a4cfdaf0800c",
+  "timestamp": 1789795386,
+  "telemetry": {
+    "cfdi_score": 0.2,
+    "phronesis_index": 0.8,
+    "algorithmic_shame_breached": true
+  },
+  "failure_details": {
+    "failed_task": "SYSTEM_PATCH_COMPILATION",
+    "failed_step": "target_api_assembly",
+    "error_classification": "DCCD_COMPILATION_EXHAUSTED",
+    "reason": "COMPILATION_EXHAUSTED_LIMIT_3: DCCD_SCHEMA_VIOLATION: Missing required invariant key 'target_api'",
+    "symbolic_scar_ref": "6e87337e-5432-4c39-a8e9-303d92cb247b"
+  },
+  "data_voids": [
+    {
+      "field_name": "target_api_assembly",
+      "expected_type": "AbstractSyntaxTree",
+      "failure_mode": "SYNTACTIC_DRIFT"
+    }
+  ],
+  "corrective_proposal": {
+    "action": "SAGA_ROLLBACK_AND_ISOLATE",
+    "remediation_query": "SELECT * FROM scar_tissue_archive WHERE scar_id = '6e87337e-5432-4c39-a8e9-303d92cb247b'"
+  }
+}
