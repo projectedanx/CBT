@@ -288,3 +288,73 @@ export interface TelemetryMetrics {
   confidenceFidelityDivergenceIndex: number;
   betti1PersistentLoops: number;
 }
+
+/**
+ * PHASE 12: VERIFICATION CO-PROCESSOR (VCP) & DIFFERENTIABLE CACHE AUGMENTATION
+ */
+
+/**
+ * Encapsulates the configuration parameters for the REFLX_IDE Harness.
+ */
+export interface ReflxIdeHarnessParams {
+  /** The threshold for Confidence-Fidelity Divergence. Halts execution if exceeded. */
+  cfdiThreshold: number;
+  /** The threshold for instantaneous semantic change. Triggers VCP deliberation. */
+  driftThresholdXi: number;
+  /** Dynamic coupling coefficient scaled by precision-weighting [0.12 - 1.50]. */
+  couplingGainBeta: number;
+  /** Required Mutation Recoverability Score (e.g., >= 0.80). */
+  targetMRS: number;
+}
+
+/**
+ * Diagnostic metrics calculated during the Topological and Epistemic Audit.
+ */
+export interface VCPDiagnosticMetrics {
+  /** Betti-0 signature: Connected components. */
+  betti0: number;
+  /** Betti-1 signature: Homological loops (Stable logical contradictions if >= 1). */
+  betti1: number;
+  /** Semantic Drift Coefficient (SDC): Instantaneous rate of semantic change. */
+  sdc: number;
+  /** Confidence-Fidelity Divergence Index (CFDI). */
+  cfdi: number;
+}
+
+/**
+ * Structured state mapping of an active VCP remediation transaction.
+ */
+export interface VCPRemediationPlan {
+  transaction_id: string;
+  parent_trace_hash: string;
+  triggering_anomaly: {
+    metric: 'CFDI' | 'SDC' | 'BETTI_1';
+    value: number;
+    threshold_limit: number;
+  };
+  symbolic_anchor_target: {
+    class: string;
+    centroid_vector: number[]; // e.g., [0.1147, -0.0982, ...]
+  };
+  remediation_plan: {
+    intervention_type: 'differentiable_cache_augmentation';
+    augmented_layers: number[];
+    soft_token_length: number;
+    calculated_offset_norm: number;
+  };
+  post_remediation_audit?: {
+    new_cfdi_value: number;
+    betti_signature: { beta_0: number; beta_1: number; };
+  };
+}
+
+/**
+ * A detailed report generated when Epistemic Escrow is tripped due to unrecoverable anomalies.
+ */
+export interface JustifiedUncertaintyReport {
+  timestamp: string;
+  transaction_id: string;
+  violation_type: 'STABLE_LOGICAL_CONTRADICTION' | 'CATASTROPHIC_CONCEPTUAL_FRAGMENTATION';
+  metrics: VCPDiagnosticMetrics;
+  aborted_payload: any;
+}
