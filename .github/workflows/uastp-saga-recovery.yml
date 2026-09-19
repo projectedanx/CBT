@@ -51,7 +51,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           package_manager: "npm"
-          specified_smells: "Aliased, No_Provenance, Invalid_Signature" # Fails on unverified packages
+          specified_smells: "--check-aliased-packages --check-provenance --check-code-signature" # Fails on unverified packages
 
   # ============================================================================
   # MANIFOLD BETA: Stateful Infrastructure Mutation with Paired Compensation
