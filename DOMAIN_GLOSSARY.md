@@ -22,3 +22,7 @@ A cognitive mapping parameter applied to attention matrices using S5 Kripke fram
 
 ### Pluriversal Lenses
 Five distinct analytical frameworks (Digital Habitus, Extractive Sprint, Crip-Time Genealogy, Relational Sovereignty, Artifact Imperfection) used to bypass superficial organizational analysis and inject deterministic socio-technical dissonance into the architectural model.
+
+*   **Differentiable Cache Augmentation:** A control loop mechanism wherein the Verification Co-Processor injects highly compressed, corrective latent embeddings directly into the primary model's active Key-Value (KV) cache, realigning divergent semantic trajectories without altering parametric weights.
+*   **Differentiable Logic Manifold (DLM):** Translates discrete Boolean constraints and safety rules into continuous, differentiable potential barriers.
+*   **Symbolic Anchor Subsystem (SAM):** Provides stable, human-verified coordinates vector representing core mission boundaries.

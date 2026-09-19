@@ -83,3 +83,10 @@ Inverting the hegemonic data relationship by strictly tethering the generative c
 **Observation:** Manual adjustments to model temperature and top-K often resulted in either deterministic rigidity or uncontrollable hallucinations. We needed a thermodynamic approach to information flow.
 **Implication:** Exposing raw generation parameters to UI components violates the VULCAN Mereological Mandate. We must encapsulate generation physics into formalized semantic "modes".
 **Decision:** Implemented Variable Viscosity Prompting (VVP) via the `RheologicalControllerService` (ADR-16). The system now explicitly tracks and operates in `CRYSTAL` (strict schema, Temp: 0) or `CLOUD` (high-entropy, Temp > 0.7) modes, dynamically responding to semantic entropy telemetry.
+
+## 6. Real-time Trajectory Correction via Verification Co-Processor (VCP)
+*   **Observation:** The shift to continuous latent reasoning created an observability gap, leading to "covert reasoning" and semantic drift that traditional post-generation filtering could not prevent.
+*   **Resolution:** Implemented the Verification Co-Processor (VCP) to operate as a decoupled, asynchronous System 2 controller. By ingesting deviant KV-cache states and synthesizing them with DLM logic and SAM anchors, the VCP performs Differentiable Cache Augmentation—bends the generation back to the intended topology in real-time.
+*   **Validation Date:** Current Epoch
+*   **Vector:** Real-time generation stabilization via VCP Guard Loop.
+*   **Lesson:** Treating logical safety limits as continuous, differentiable potentials (via the DLM) allows non-destructive, sub-token interventions, preserving affective latent space homeostasis (ALSH) while preventing Epistemic Escrow tripping.

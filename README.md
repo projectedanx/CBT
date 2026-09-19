@@ -102,13 +102,20 @@ Rather than averaging out human contradictions (Semantic Annihilation), users ca
 The Symbiotic Tensor Mesh calculates the S5-Modal Attention force required to lock this contradiction into the structural graph, actively changing the gravitational boundaries of the generated artifacts.
 
 
-## 11. Codebase Documentation Standards
+
+## 11. Verification Co-Processor (VCP) and Differentiable Cache Augmentation
+To combat "covert reasoning" and unobservable latent semantic drift, the architecture integrates a decoupled **Verification Co-Processor (VCP)**.
+*   **Decoupled Epistemic Gating:** The VCP continuously monitors the primary model's active Key-Value (KV) cache for divergence.
+*   **Differentiable Cache Augmentation:** When drift exceeds the $\xi \ge 0.30$ threshold, the VCP generates corrective latent embeddings and injects them directly into the primary model's feedforward pass.
+*   **Dual-Encoder Synthesis:** Synthesizes the deviant KV-Cache with the Target Anchor (SAM) and continuous potential barriers from the Differentiable Logic Manifold (DLM) to compute the exact trajectory correction required without degrading Generation Latency.
+
+## 12. Codebase Documentation Standards
 All new contributions to the system must adhere to strict JSDoc guidelines. Every public class, method, property, and interface must be fully documented, explaining:
 - Its structural purpose within the CBT architecture.
 - Detailed descriptions of parameters and return types.
 - Theoretical rationales when implementing specific cognitive heuristics or mathematical bounds (e.g., the Golden Ratio constraints).
 
-## 12. Personal Knowledge Corpus (PKC) Integration (Phase 9 Integration)
+## 13. Personal Knowledge Corpus (PKC) Integration (Phase 9 Integration)
 This architecture integrates a Git-anchored Personal Knowledge Corpus (PKC) designed for "Context Engineering 2.0". By mapping unstructured text into a highly structured `pkc_manifest.yml` graph, we establish a sovereign "Semantic Tether".
 
 *   **Cryptographic & Ontological Provenance:** Source documents are cryptographically hashed and version-controlled via `context_hashes` to flag semantic drift.
