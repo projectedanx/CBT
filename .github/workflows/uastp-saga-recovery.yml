@@ -32,7 +32,7 @@ jobs:
   # ============================================================================
   epistemic-audit:
     name: "Epistemic Guard & Security Gate"
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
       - name: "Checkout Sovereign Repository State"
@@ -59,7 +59,7 @@ jobs:
   stateful-deploy:
     name: "Idempotent Deployment & Active Saga Guard"
     needs: epistemic-audit
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-22.04
     environment: production
     timeout-minutes: 15
     steps:
