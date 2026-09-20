@@ -147,3 +147,18 @@ Inverting the hegemonic data relationship by strictly tethering the generative c
 *   **Context:** Previous architectural designs relied on discrete, token-based reasoning bottlenecks and rigid text-based prompt steering (like Chain-of-Thought). These induced "lexical bottlenecks", error propagation, and high latency through verbose text output.
 *   **Action:** The architecture has shifted to continuous latent steering using the MCRE. We integrated `SoftTokenSteeringContract` structures and `Differentiable Cache Augmentation` within the `scos_jit_orchestrator.py`. The `VerificationCoProcessor` now monitors a Latent Drift Delta (< 0.12) and executes simulated soft-token injections to steer the KV-cache when CFDI thresholds (now 0.42) are breached.
 *   **Outcome:** Eliminates the cognitive load and token budget spent on verbose textual self-auditing. Soft tokens manipulate the geometric landscape of the network directly, enabling non-verbal semantic realignments and maximizing fidelity without degrading inference latency.
+
+## Phase 14: Epistemic Mechanics & The Insight Gap
+**Date:** Current Epoch
+**Focus:** Mitigating the discrepancies between human conceptual models of AI ("Instruction-Follower", "Semantic Intent", "Unified Memory") and the transformer's computational reality.
+**Insights:**
+1. **The Insight Gap as Epistemic Friction:** Divergent outputs are not inherently system failures, but productive friction that falsifies flawed anthropomorphic assumptions. Transitioning from passive prompting to test-driven Latent Trajectory Shaping is mandatory.
+2. **Pedagogical Isomorphisms:**
+   - Successfully mapped Kahneman's Dual-Process theory to Variable Viscosity Prompting (VVP), managing computational economics between high-entropy and scaffolded execution.
+   - Mapped Vygotskian Scaffolding to Least-to-Most (LTM) architectures to prevent cognitive collapse.
+   - Mapped Khan Mastery Learning to the "Fix-Until-Green" verification loops utilizing Design by Contract (DbC) and Socratic Correction Subroutines.
+3. **Prompt Bloatware & Ablation:** Standard prompt engineering accumulates Linguistic Technical Debt. By enforcing Ablation Audits (leave-one-out masking), we verified the exact Causal Perturbation Index (CPI) of modifiers, maximizing the Token-Ink Ratio by establishing a zero-adjective baseline.
+4. **Research Methodologies Implemented:**
+   - **SAE Sycophancy Audit:** Established formulations to isolate the "Sycophancy Attractor" and apply orthogonal closed-loop gradient steering at Layer 24.
+   - **TDA Manifold Tearing:** Implemented Persistent Homology (via Betti-1 voids) to mathematically detect when contradictory constraints tear the semantic manifold, precipitating Semantic Saponification.
+   - **PNS5 Attention:** Formulated Fourier-domain S5-Modal Attention to leverage Holographic Circular Convolution, preventing Semantic Annihilation by binding contradictions into stable interference patterns rather than averaging them out.

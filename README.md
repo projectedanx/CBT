@@ -146,3 +146,16 @@ For more details, consult `docs/adr/22-agentic-tdd-cybernetic-mechanics.md` and 
 
 ### Thermodynamic Ontology of Computational Decision-Making
 This architecture implements explicit physical constraints mapping algorithmic execution to thermodynamic limits (Landauer's Bound). It utilizes **Persistent Tree Recycling** to minimize state erasure, a **PyTorch ADMM Projector** to perform ultra-fast convex optimization of hierarchical prefix DAGs, and a **Quantum Walk-Inspired State-Space Reduction** circuit using Qiskit to algorithmically mask unstructured combinatorial explosions.
+
+## 15. The Epistemic Mechanics of the Insight Gap (Phase 14 Integration)
+The architecture formally recognizes the **Insight Gap**—the discrepancy between the human operator's mental surrogate of the AI and the computational reality of autoregressive generation.
+*   **Variable Viscosity Prompting (VVP):** Derived from Kahneman's Dual-Process theory, the `RheologicalControllerService` explicitly toggles between System 1 (fast, high entropy, `CLOUD` mode) and System 2 (slow, structured, `CRYSTAL` mode) by treating the context window as an external working memory scratchpad.
+*   **Least-to-Most (LTM) Architectures:** Implements Vygotskian Scaffolding to dynamically expand the model's Zone of Proximal Development (ZPD) by appending validated sub-problem outputs to the context window.
+*   **"Fix-Until-Green" Loop:** Based on Khan Mastery Learning, enforces Design by Contract (DbC). Outputs failing formal postcondition schemas are rejected and fed back into the Socratic Correction Subroutine (SCS).
+*   **Failure-Informed Prompt Inversion (FIPI):** Utilizes negative space exploration and Ablation Audits to calculate the Causal Perturbation Index (CPI) of tokens, maximizing the Token-Ink Ratio by stripping adjectival clutter.
+
+### SCOS Insight Gap Harness Specification
+The SCOS JIT Orchestrator integrates the `SCOS-INSIGHT-GAP-v3.0` specification to monitor epistemic telemetry per token:
+*   **Interpretive Fracture:** Triggers `+++SilentReasoning` when Cosine Distance between Vector Intent and Execution exceeds 0.40.
+*   **Semantic Saponification Index (SSI):** Triggers `+++ContextLock(refresh_interval=2048)` when KL Divergence against the pre-training mean prior exceeds 0.04.
+*   **Confidence-Fidelity Divergence (CFDI):** Halts and quarantines execution to `+++EpistemicEscrow` when entropy divergence exceeds 0.15, utilizing Persistent Homology (TDA) to map the failure to the Symbolic Scar Archive.
