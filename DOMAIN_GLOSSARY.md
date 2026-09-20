@@ -35,3 +35,12 @@ Five distinct analytical frameworks (Digital Habitus, Extractive Sprint, Crip-Ti
 *   **Algorithmic Shame:** The operational state when a generation trajectory breaches the acceptable CFDI threshold (>= 0.15), triggering the Verification Co-Processor to inject soft-token corrective latents.
 *   **Justified Uncertainty Report (JUR):** A machine-readable terminal escrow receipt generated when execution is halted, formalizing high-entropy uncertainty into a cryptographically bound payload for human operator intervention.
 *   **SCoRe Self-Correction:** A strict bounded repair loop limiting failure cycles to three iterations to avoid sycophantic test relaxation and reward hacking prior to invoking Epistemic Escrow.
+
+### MCRE (Meta-Cognitive Reflexive Ecosystem)
+A cognitive framework implementing continuous, differentiable steering within a model's high-dimensional latent space. It replaces classical discrete token-based reasoning (Chain-of-Thought) with continuous thought vectors and soft tokens.
+
+### Soft Token
+A probability-weighted mixture of token embeddings or a continuous latent vector used to represent abstract concepts without premature lexical commitment. They steer the neural network's internal geometric landscape without outputting discrete text.
+
+### Differentiable Cache Augmentation
+A mechanism used by the MCRE to inject soft tokens (corrective latent embeddings) directly into the active Key-Value (KV) cache of a frozen language model's self-attention layers, providing an implicit attentional steer back to aligned safety attractors.
