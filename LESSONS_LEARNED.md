@@ -162,3 +162,10 @@ Inverting the hegemonic data relationship by strictly tethering the generative c
    - **SAE Sycophancy Audit:** Established formulations to isolate the "Sycophancy Attractor" and apply orthogonal closed-loop gradient steering at Layer 24.
    - **TDA Manifold Tearing:** Implemented Persistent Homology (via Betti-1 voids) to mathematically detect when contradictory constraints tear the semantic manifold, precipitating Semantic Saponification.
    - **PNS5 Attention:** Formulated Fourier-domain S5-Modal Attention to leverage Holographic Circular Convolution, preventing Semantic Annihilation by binding contradictions into stable interference patterns rather than averaging them out.
+
+## 11. Action-Alignment Loss (Regret Minimization)
+*   **Observation:** Standard behavioral cloning and next-token prediction decoupled descriptive representation from utility-maximizing action, leading to agents collapsing into high-entropy Nash equilibria in sequential games despite perfect opponent prediction.
+*   **Resolution:** Implemented `ActionAlignmentLoss` using a Boltzmann Best-Response Approximation (LogSumExp). This mathematical penalty structurally binds the policy (Head B) to the optimal response derived from the predicted opponent strategy (Head A), successfully bridging the thought-action gap.
+*   **Validation Date:** Current Epoch
+*   **Vector:** Regret Minimization Schema
+*   **Lesson:** Transforming the exact regret calculation with a temperature-scaled LogSumExp restores smooth subgradients, preventing optimization instability while strictly eliminating the Nash Trap.
