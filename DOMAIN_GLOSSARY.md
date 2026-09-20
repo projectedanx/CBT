@@ -63,3 +63,15 @@ A mechanism used by the MCRE to inject soft tokens (corrective latent embeddings
 *   **Cognitive Reynolds Number (Re):** The ratio of generative momentum to epistemic viscosity. Optimal execution lies in the Laminar Flow "Goldilocks Zone" (0.2 <= Cd <= 0.6).
 *   **Positive Friction:** Intentional system abrasive resistance triggered when CFDI > 0.42 to shift operators from System 1 to System 2 thinking.
 *   **Epistemic Pathogens:** Non-random anomalies (Concept Drift, Instrumental Convergence, Semantic Ambiguity) injected by the Chaos Engine to stress-test Shared Mental Models.
+
+### Parsimonious Architecture Protocol (PAP)
+The epistemological gating architecture designed to enforce Occam's Razor within automated scientific reasoning. It prevents model over-fitting and generative drift by mathematically evaluating the trade-off between structural complexity (assumptions and parameters) and empirical predictive accuracy.
+
+### Occam Loss Compiler
+A sub-component of the PAP that compiles competing scientific theories into Directed Acyclic Graphs (DAGs) and calculates a quantitative complexity penalty ($C(G)$). It executes a Pareto Optimization function to select the "Simplest Adequate Approximation," requiring a $\geq 3\sigma$ reduction in error to justify any increase in structural complexity.
+
+### Bayesian Model Reduction (BMR)
+An active inference mechanism that continually prunes the system's reasoning branches. BMR maximizes the marginal likelihood of internal explanations by penalizing unverified assumptions and running a Self-Consolidation Loop that compresses verbose logic into elegant, generative "fictive principles."
+
+### Isomorphic Model Travel Auditor
+A verification harness governing the cross-disciplinary application of theoretical models. It utilizes an Ontological Mapping Engine and a Boundary Condition Validator to ensure that a model's underlying causal structure does not violate the invariant constraints of the target domain. Violations trigger a Modus Tollens falsification and Epistemic Escrow.

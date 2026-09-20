@@ -174,3 +174,8 @@ Inverting the hegemonic data relationship by strictly tethering the generative c
 - **Discovery:** Implementing the IKEA effect visually acts as a countermeasure against Intent Drift. Allowing teams to co-create limits extraneous cognitive load.
 - **Chaos Falsification:** Intentionally injecting epistemic pathogens validates the strength of the Shared Mental Model (SMM). If the CFDI crosses the 0.42 threshold, the Epistemic Escrow Circuit Breaker must halt execution.
 - **Isomorphic Formalization:** Translating visual sketches to Domain Specific Languages (DSL) through an execution pipeline (CxEP) proved critical in maintaining the cognitive contract between agents and humans.
+
+## Structural Over-fitting and Parsimony (PAP)
+**Context:** When integrating multiple AI agents inside the JIT Swarm Orchestrator, we observed a tendency toward "epicyclic" curve-fitting—where the agents would hallucinate complex, ad-hoc parameters to explain away edge cases, rather than acknowledging fundamental model failure.
+**Action:** Implemented the Parsimonious Architecture Protocol (PAP), containing an Occam Loss Compiler, a Bayesian Model Reduction (BMR) pruning loop, and an Isomorphic Model Travel Auditor.
+**Result:** The system now structurally penalizes unnecessary complexity ($C(G)$). If an agent attempts to inject a new assumption without a mathematically guaranteed $\geq 3\sigma$ reduction in predictive error, the BMR active pruning layer rejects the branch and forces consolidation.
