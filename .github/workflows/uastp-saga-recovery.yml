@@ -59,6 +59,7 @@ jobs:
   stateful-deploy:
     name: "Idempotent Deployment & Active Saga Guard"
     needs: epistemic-audit
+    if: github.event_name == 'push'
     runs-on: ubuntu-22.04
     environment: production
     timeout-minutes: 15
