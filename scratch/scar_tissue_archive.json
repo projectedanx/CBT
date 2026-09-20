@@ -1,3 +1,15 @@
 {
-  "scars": []
+  "6e87337e-5432-4c39-a8e9-303d92cb247b": {
+    "scar_id": "6e87337e-5432-4c39-a8e9-303d92cb247b",
+    "timestamp_ms": 1789795386882,
+    "task_type": "SYSTEM_PATCH_COMPILATION",
+    "failure_mode": "MANDATE_FIELD_PRESENCE: 'target_api'",
+    "traceback": "DCCD_SCHEMA_VIOLATION: Missing required invariant key 'target_api'",
+    "repulsion_coefficient": 0.85,
+    "context_snapshot": {
+      "user_prompt": "Apply system patch to route telemetry events asynchronously.",
+      "trace_id": "e66e5232-9481-4a85-96b0-a4cfdaf0800c"
+    },
+    "f_ipi_constraint": "STRICTLY_AVOID: MANDATE_FIELD_PRESENCE: 'target_api' for TaskType=SYSTEM_PATCH_COMPILATION"
+  }
 }

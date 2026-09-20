@@ -25,7 +25,7 @@ import random
 from typing import Dict, List, Any, Optional, Tuple, Set
 
 # --- CONSTANTS & SYSTEM CONFIGURATIONS ---
-AST_SHAME_THRESHOLD = 0.42  # CFDI >= 0.15 triggers Epistemic Escrow
+AST_SHAME_THRESHOLD = 0.42  # CFDI >= 0.42 triggers Epistemic Escrow
 MAX_REWORK_CYCLES = 3       # Hard ceiling for self-repair loop
 JIT_SPAWN_LATENCY_NS = 2830 # ~2.83 microseconds
 JIT_IDLE_MEMORY_KIB = 6.5   # ~6.5 KiB memory footprint
