@@ -1,5 +1,8 @@
 PyYAML==6.0.3
 watchdog==6.0.0
 pdfplumber==0.11.10
-numpy
-scipy
+numpy~=1.26.4
+scipy~=1.13.0
+torch~=2.2.0
+qiskit~=1.0.0
+qiskit-aer~=0.14.0
