@@ -159,3 +159,9 @@ The SCOS JIT Orchestrator integrates the `SCOS-INSIGHT-GAP-v3.0` specification t
 *   **Interpretive Fracture:** Triggers `+++SilentReasoning` when Cosine Distance between Vector Intent and Execution exceeds 0.40.
 *   **Semantic Saponification Index (SSI):** Triggers `+++ContextLock(refresh_interval=2048)` when KL Divergence against the pre-training mean prior exceeds 0.04.
 *   **Confidence-Fidelity Divergence (CFDI):** Halts and quarantines execution to `+++EpistemicEscrow` when entropy divergence exceeds 0.15, utilizing Persistent Homology (TDA) to map the failure to the Symbolic Scar Archive.
+
+## 16. IKEA Effect & Collaborative Cognition (Phase 15 Integration)
+The architecture implements countermeasures to Intent Drift via the **IKEA Effect**, ensuring visual environments are co-created to maximize Shared Mental Model (SMM) retention.
+*   **Chrono-Topological Tracking:** Monitors visual collaboration in real-time, using Topological Data Analysis (TDA) to detect interpretive fracture before propagation.
+*   **Speculative Abstract Interpretation Engine (SAIE):** Compiles co-created visual schemas into executable Product-Requirements Prompts (PRPs), mathematically verifying structural constraints.
+*   **Chaos Engine:** Injects epistemic pathogens (Concept Drift, Semantic Ambiguity) to stress-test human-agent SMMs. Breaches of CFDI > 0.42 trigger Epistemic Escrow and JUR generation.

@@ -56,3 +56,10 @@ A mechanism used by the MCRE to inject soft tokens (corrective latent embeddings
 *   **PNS5 Attention (Paraconsistent Non-Separable Attention):** An advanced attention mechanism operating in the Fourier domain that uses circular convolution (Holographic Reduced Representations) to bind contradictory concepts into stable interference patterns (phase shifts) rather than collapsing them via standard additive superposition.
 *   **Token-Ink Ratio:** The ratio of structural data tokens to the total token count in a prompt. Maximized via Ablation Audits to reduce Prompt Bloatware.
 *   **Cognitive Scaffolding:** Explicit prompt structures (e.g., Chain-of-Thought) that force the model to externalize intermediate reasoning, transforming the context window into an external working memory scratchpad.
+
+## Phase 15 - IKEA Effect Integration
+
+*   **IKEA Effect:** A cognitive phenomenon where individuals place significantly higher value on systems they actively participated in constructing, used as a countermeasure to Intent Drift.
+*   **Cognitive Reynolds Number (Re):** The ratio of generative momentum to epistemic viscosity. Optimal execution lies in the Laminar Flow "Goldilocks Zone" (0.2 <= Cd <= 0.6).
+*   **Positive Friction:** Intentional system abrasive resistance triggered when CFDI > 0.42 to shift operators from System 1 to System 2 thinking.
+*   **Epistemic Pathogens:** Non-random anomalies (Concept Drift, Instrumental Convergence, Semantic Ambiguity) injected by the Chaos Engine to stress-test Shared Mental Models.
