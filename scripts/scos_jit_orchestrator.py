@@ -10,7 +10,7 @@ Projection Tax and isolating the 16% to 50% Tooling Context Consumption Tax.
 Architectural Dependencies:
 - SRE Petzold Sequence DFA Transitions
 - Draft-Conditioned Constrained Decoding (DCCD)
-- Confidence-Fidelity Divergence Index (CFDI) / Algorithmic Shame Threshold (AST >= 0.15)
+- Confidence-Fidelity Divergence Index (CFDI) / Algorithmic Shame Threshold (AST >= 0.42)
 - Verification Co-Processor (VCP) & Differentiable Cache Augmentation (Soft Tokens)
 - Scar Tissue Archive (STA) & Failure-Informed Prompt Inversion (F-IPI)
 - Epistemic Escrow Gating & Saga Compensating Transactions
@@ -25,10 +25,33 @@ import random
 from typing import Dict, List, Any, Optional, Tuple, Set
 
 # --- CONSTANTS & SYSTEM CONFIGURATIONS ---
-AST_SHAME_THRESHOLD = 0.15  # CFDI >= 0.15 triggers Epistemic Escrow
+AST_SHAME_THRESHOLD = 0.42  # CFDI >= 0.15 triggers Epistemic Escrow
 MAX_REWORK_CYCLES = 3       # Hard ceiling for self-repair loop
 JIT_SPAWN_LATENCY_NS = 2830 # ~2.83 microseconds
 JIT_IDLE_MEMORY_KIB = 6.5   # ~6.5 KiB memory footprint
+
+SOFT_TOKEN_STEERING_CONTRACT = {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SoftTokenSteeringContract",
+  "type": "object",
+  "required": ["step_id", "deviant_state_hash", "soft_token_payload", "target_anchor_id", "post_steering_scr"],
+  "properties": {
+    "step_id": { "type": "string", "format": "uuid" },
+    "deviant_state_hash": { "type": "string", "pattern": "^0x[a-fA-F0-9]{64}$" },
+    "soft_token_payload": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": { "type": "number" },
+        "minItems": 1536,
+        "maxItems": 1536
+      }
+    },
+    "target_anchor_id": { "type": "string" },
+    "post_steering_scr": { "type": "number", "minimum": 0.95 }
+  }
+}
+
 
 # Setup Scratch Environment
 SCRATCH_DIR = "./scratch"
@@ -130,6 +153,13 @@ class VerificationCoProcessor:
     """
     def __init__(self, scar_archive: SymbolicScarArchive):
         self.scar_archive = scar_archive
+        self.steering_contract = SOFT_TOKEN_STEERING_CONTRACT
+
+    def check_latent_drift(self, drift_delta: float) -> bool:
+        """
+        Hard Boundary: Latent Drift Delta (Δ_drift) < 0.12.
+        """
+        return drift_delta < 0.12
 
     def compute_cfdi(self, logits: List[float], ast_adherence: float) -> float:
         """
@@ -144,15 +174,21 @@ class VerificationCoProcessor:
 
     def execute_cache_augmentation(self, task_type: str, active_prompt: str) -> Tuple[str, List[str]]:
         """
-        Differentiable Cache Augmentation:
+        Differentiable Cache Augmentation (MCRE Soft Token Injection):
         Injects pre-compiled soft tokens and F-IPI repulsive constraints directly
-        into the active context sink to repel the model from the historical failure space.
+        into the active context KV-cache (simulated via sink append) to repel the model
+        from the historical failure space.
         """
         scars = self.scar_archive.query_repulsive_constraints(task_type)
         if scars:
             augmented_prompts = []
             for scar in scars:
                 augmented_prompts.append(f"MANDATE_FIELD_PRESENCE: 'target_api' for TaskType={task_type}")
+
+            # Simulate Soft Token KV-Cache Payload Injection
+            soft_token_injection_sim = "[KV_AUGMENT: MCRE Soft Token Vector (d=1536) applied]"
+            augmented_prompts.append(soft_token_injection_sim)
+
             # Return augmented prompt-ware rules to inject into the attention sink
             return " | ".join(augmented_prompts), scars
         return "", []
@@ -230,13 +266,18 @@ class JITSwarmOrchestrator:
         cfdi = self.vcp.compute_cfdi(mock_logits, ast_adherence)
 
         # Override to simulate excessive drift on un-immunized runs
-        cfdi = 0.200
+        cfdi = 0.500 # Simulating excessive drift beyond new 0.42 threshold
+
+        # Simulate MCRE Latent Drift Delta calculation
+        latent_drift_delta = 0.15
+        if not self.vcp.check_latent_drift(latent_drift_delta):
+            print(f"[Warning] Latent Drift Delta ({latent_drift_delta}) exceeded hard boundary (0.12). System instability detected.")
 
         print(f"[Telemetry] Mid-stream sensory sweep complete. Instantaneous CFDI={cfdi:.3f}")
 
         f_ipi_injection, active_repulsors = self.vcp.execute_cache_augmentation(task_type, user_prompt)
         if cfdi >= AST_SHAME_THRESHOLD:
-            print(f"[Warning] CFDI has breached the Algorithmic Shame Threshold (>=0.15). Engaging VCP Latent Steering...")
+            print(f"[Warning] CFDI has breached the Algorithmic Shame Threshold (>=0.42). Engaging VCP Latent Steering...")
             print("[VCP] Eavesdropping on active GPU enclaves. Extracting deviant context embeddings...")
             if f_ipi_injection:
                 print(f"[VCP] Applying Differentiable Cache Augmentation: {f_ipi_injection}")
