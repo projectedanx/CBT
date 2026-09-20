@@ -65,6 +65,7 @@
 ## Phase 12: Action-Alignment Implementation (Active)
 - [x] **Regret Minimization Schema:** Implement the PyTorch `ActionAlignmentLoss` utilizing the Boltzmann Best-Response Approximation.
 - [x] **Nash Trap Mitigation:** Mathematically bind the policy head (Head B) to the optimal response derived from the predictive head (Head A).
-- [ ] **Circuit Distillation (Research):** Transfer the causal belief-tracking "lookback circuit" from an unaligned teacher model into a smaller student model.
-- [ ] **Closed-Loop ReCAP (Research):** Wrap the frontier LLM inside a formal Belief-Desire-Intention (BDI) engine to eliminate predictive-behavioral decoupling.
+- [x] **Circuit Distillation (Research):** Transfer the causal belief-tracking "lookback circuit" from an unaligned teacher model into a smaller student model.
+- [x] **Closed-Loop ReCAP (Research):** Wrap the frontier LLM inside a formal Belief-Desire-Intention (BDI) engine to eliminate predictive-behavioral decoupling.
+- [x] **Temporal-Aware Hierarchical Cognitive RL (TimeHC-RL):** Integrates Macro (System 2) and Micro (System 1) policies to prevent CoT penalty.
 - [ ] **Active Bayes Risk Probing (Research):** Implement a POMDP active learning controller to mitigate the epistemic sponge effect.
