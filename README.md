@@ -165,3 +165,11 @@ The architecture implements countermeasures to Intent Drift via the **IKEA Effec
 *   **Chrono-Topological Tracking:** Monitors visual collaboration in real-time, using Topological Data Analysis (TDA) to detect interpretive fracture before propagation.
 *   **Speculative Abstract Interpretation Engine (SAIE):** Compiles co-created visual schemas into executable Product-Requirements Prompts (PRPs), mathematically verifying structural constraints.
 *   **Chaos Engine:** Injects epistemic pathogens (Concept Drift, Semantic Ambiguity) to stress-test human-agent SMMs. Breaches of CFDI > 0.42 trigger Epistemic Escrow and JUR generation.
+
+### Advanced Verifiable Cognition Research
+
+The `research/` directory contains deep explorations into advanced mechanisms for enforcing the Verifiable Cognition Stack (VCS) Layer 3:
+
+*   **`topological_homology_barcodes.md`**: Uses Topological Data Analysis (Persistent Homology) to monitor LLM latent spaces for structural anomalies (e.g., circular reasoning loops).
+*   **`differentiable_logic_engines.md`**: Outlines a hybrid neuro-symbolic gatekeeper using Differentiable Logic to vet tool-call sequences for safety against declarative laws before execution.
+*   **`sepao_autopoietic_ontology.md`**: Defines an automated self-healing loop that uses AST static analysis and Failure-Informed Prompt Inversion (F-IPI) to dynamically evolve the agent's constraints in response to runtime friction.
