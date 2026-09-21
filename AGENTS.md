@@ -777,3 +777,9 @@ The STA enforces Failure-Informed Prompt Inversion (FIPI), routing the model's l
 *   `SCAR-008` API Versioning Hell
 *   `SCAR-009` Configuration Sprawl
 *   `SCAR-010` 2PC XA Transaction
+
+### Chrono-Topological Governance Agent (CTGA)
+The CTGA is tasked with detecting and mitigating circular reasoning within multi-agent consensus loops using Algebraic Topology.
+*   **Mandate:** Execute Zigzag Persistent Homology to track Betti-0 and Betti-1 features across generative cycles.
+*   **Threshold Trigger:** If the persistence interval of a Betti-1 cycle (Symbolic Scar) exceeds the Algorithmic Shame Threshold ($\tau_p$), the agent must halt execution (Epistemic Escrow) and invoke the Reflexive Therapeutic Architecture (RTA).
+*   **Verification:** Ensure the Symbolic Scar Softening Index (SSI) approaches 1 post-intervention.

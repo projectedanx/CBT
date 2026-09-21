@@ -75,3 +75,11 @@ An active inference mechanism that continually prunes the system's reasoning bra
 
 ### Isomorphic Model Travel Auditor
 A verification harness governing the cross-disciplinary application of theoretical models. It utilizes an Ontological Mapping Engine and a Boundary Condition Validator to ensure that a model's underlying causal structure does not violate the invariant constraints of the target domain. Violations trigger a Modus Tollens falsification and Epistemic Escrow.
+
+## TDA and Chrono-Topological Constructs
+
+*   **Zigzag Persistent Homology:** A topological data analysis method used to track the lifespan of structural features (components, holes) across a non-monotonic, evolving point cloud (e.g., dynamic multi-agent dialogue).
+*   **Betti-0 ($\beta_0$):** The number of connected components in a topological space. Used to measure Structural Conservation (Concept Collapse when decreasing).
+*   **Betti-1 ($\beta_1$):** The number of 1-dimensional holes or loops. Used to identify circular reasoning, self-referential paradoxes, and stable logical contradictions within latent space.
+*   **Symbolic Scar Softening Index (SSI):** A verification metric measuring the reduction in the Betti-1 persistence interval after paraconsistent therapeutic intervention. $SSI = 1 - (Scar_{final} / Scar_{initial})$.
+*   **Semantic Drift Coefficient (SDC):** An optimizable metric mapping the displacement of structural invariants over recursive generation steps. Modeled as $||f(z_n) - z_n||$ within a Möbius Constitutional Verifier.
