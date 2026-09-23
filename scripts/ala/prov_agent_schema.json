@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/prov-agent-schema.json",
+  "title": "PROV-AGENT Schema for ALA",
+  "description": "Strict isomorphic formalization structure for anomaly detection events preserving causal lineage.",
+  "type": "object",
+  "properties": {
+    "prov:type": {
+      "type": "string",
+      "enum": ["ala_adaptation_event"],
+      "description": "The type of provenance event."
+    },
+    "ala_state": {
+      "type": "object",
+      "properties": {
+        "target_agent_id": {
+          "type": "string",
+          "description": "Identifier of the agent whose action was evaluated."
+        },
+        "entropy_gradient": {
+          "type": "number",
+          "description": "The calculated toolchain entropy gradient at the time of evaluation."
+        },
+        "bicm_intent_coherence": {
+          "type": "number",
+          "description": "BICM Intent Coherence score calculated from SEPAO graph."
+        },
+        "time_to_decision_lag_ms": {
+          "type": "integer",
+          "description": "Latency in milliseconds from action request to triage decision."
+        }
+      },
+      "required": ["target_agent_id", "entropy_gradient", "bicm_intent_coherence", "time_to_decision_lag_ms"]
+    },
+    "hitl_verdict": {
+      "type": "string",
+      "enum": ["TERMINATE_CONFIRMED_MISUSE", "OVERRIDE_AND_APPROVE", "QUARANTINE_FOR_REVIEW"],
+      "description": "The human-in-the-loop decision following a breach threshold event."
+    },
+    "ala_action": {
+      "type": "object",
+      "properties": {
+        "recalibrated_weights": {
+          "type": "object",
+          "properties": {
+            "intent_divergence_weight": {
+              "type": "number"
+            },
+            "toolchain_entropy_threshold": {
+              "type": "number"
+            }
+          },
+          "required": ["intent_divergence_weight", "toolchain_entropy_threshold"]
+        },
+        "exploit_fingerprint_generated": {
+          "type": "string",
+          "description": "Identifier or hash of the Symbolic Scar generated and stored in the STA."
+        }
+      },
+      "required": ["recalibrated_weights", "exploit_fingerprint_generated"]
+    }
+  },
+  "required": ["prov:type", "ala_state", "hitl_verdict", "ala_action"]
+}

@@ -83,3 +83,15 @@ A verification harness governing the cross-disciplinary application of theoretic
 *   **Betti-1 ($\beta_1$):** The number of 1-dimensional holes or loops. Used to identify circular reasoning, self-referential paradoxes, and stable logical contradictions within latent space.
 *   **Symbolic Scar Softening Index (SSI):** A verification metric measuring the reduction in the Betti-1 persistence interval after paraconsistent therapeutic intervention. $SSI = 1 - (Scar_{final} / Scar_{initial})$.
 *   **Semantic Drift Coefficient (SDC):** An optimizable metric mapping the displacement of structural invariants over recursive generation steps. Modeled as $||f(z_n) - z_n||$ within a Möbius Constitutional Verifier.
+
+### Anomaly Learning Agent (ALA)
+A meta-learning system that adapts defensive postures in real time by quantifying the predictability of an agent’s behavior. It utilizes a hybrid neural-symbolic calculation (Neural Sequence Modeling, Information-Theoretic Entropy, and Bayesian Inference) to preemptively flag "grey-zone misuse".
+
+### PROV-AGENT Schema
+A strict, isomorphic formalization structure used by the ALA to compile anomaly detections, HITL interventions, and parameter updates into securely typed, verifiable records that preserve causal lineage.
+
+### Failure-Informed Prompt Inversion (F-IPI)
+An automated cognitive immunology mechanism that analyzes "Symbolic Scars" from failed execution pathways or safety violations, and reverse-engineers specific negative constraints and friction-inducing prompts to mathematically block that causal pathway in future inference cycles.
+
+### Toolchain Entropy Gradient
+A metric tracking the rate of change in Shannon information entropy over a sliding window of recent tool-call transitions. A sharp, positive gradient flags a rapid shift from predictable behavior to chaotic, exploratory actions, triggering higher security vetting.

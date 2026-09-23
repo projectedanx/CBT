@@ -197,3 +197,11 @@ We have formalized the integration of the Verifiable Cognition Stack (VCS) Layer
 3.  **Autopoietic Self-Healing Ontologies via SEPAO (`research/sepao_autopoietic_ontology.md`)**:
     *   **Concept**: Designing an environment scanner (using AST parsing) to detect semantic drift and employing Failure-Informed Prompt Inversion (F-IPI) to mutate the agent's constitution upon encountering errors.
     *   **Lesson**: Autopoietic systems require a continuous loop of environmental sensing, error isolation, scar generation, and metamorphic verification to dynamically repair their operating ontology without inducing "Scar-Induced Rigidity."
+
+### 17. ALA Threshold Dynamics and Epistemic Homeostasis (2026-03-30)
+*   **Observation:** Relying solely on static security thresholds fails under the dual pressures of adversarial mutation and legitimate developer workflow evolution.
+*   **Discovery:** Modeling the ALA detection threshold as a dynamic physical system reveals three distinct failure/success modes:
+    *   **Under-Damped:** Overreacting to false positives (developer complaints) causes the threshold to drift into a highly permissive zone, resulting in "Sycophantic Blindness" and vulnerability to slow Semantic Pivots.
+    *   **Over-Damped:** Ignoring human overrides to prioritize true positives pushes the threshold near-zero, resulting in "Semantic Ossification" and debilitating alert fatigue.
+    *   **Critically Damped:** The optimal state, achieving "Epistemic Homeostasis". By dynamically balancing learning rates (Alpha and Beta) based on the Free Energy Principle, the system permits constructive exploration while strictly preempting anomalies on Watchlisted tools.
+*   **Resolution:** Implemented `threshold_dynamics_simulation.py` to mathematically prove the necessity of balanced damping coefficients ($\alpha \approx 0.15, \beta \approx 0.20$) in the ALA specification.
