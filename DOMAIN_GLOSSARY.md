@@ -95,3 +95,18 @@ An automated cognitive immunology mechanism that analyzes "Symbolic Scars" from 
 
 ### Toolchain Entropy Gradient
 A metric tracking the rate of change in Shannon information entropy over a sliding window of recent tool-call transitions. A sharp, positive gradient flags a rapid shift from predictable behavior to chaotic, exploratory actions, triggering higher security vetting.
+
+### Invariant Verification Harness (IVH)
+A systems-level architecture designed to programmatically mine, formalize, and stress-test candidate scientific laws. It enforces epistemic rigor by mapping descriptive generalizations (laws) and causal mechanisms (theories) into verifiable structures.
+
+### Isomorphic Formalization
+The translation of qualitative natural language regularities into strongly typed mathematical schemas (e.g., coordinate-free tensors or closed-form differential equations). Essential for avoiding vague generalizations.
+
+### Fictive Principles
+Idealized assumptions (e.g., zero molecular volume, frictionless surfaces, point masses) used in scientific modeling. While strictly false (non-factive), they provide high computational and explanatory utility in defined domains.
+
+### Systemic De-Idealization
+The automated process of detecting when an idealized model fails (diverges by $>3\sigma$) under boundary stress, followed by the targeted re-injection of previously omitted variables to construct a higher-dimensional representation.
+
+### Epicyclic Over-fitting
+The failure mode of adding arbitrary free parameters to save a fundamentally flawed coordinate system or paradigm (e.g., Ptolemaic epicycles), which is penalized by Information Criteria (like BIC or AIC) in favor of parsimonious laws.
