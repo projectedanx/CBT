@@ -183,3 +183,18 @@ INFRASTRUCTURE MUTATION LOGGED.
 
 [EPISTEMIC METROLOGY STRICTLY ENFORCED]
 </final_output>
+
+<thinking>
+DISCOVER: Mined architectural request for the Invariant Verification Harness (IVH), encompassing Anomaly Mining, Formalization, and De-Idealization mechanisms.
+CLASSIFY: Core Architectural Expansion. Requires implementation of rigorous epistemic constraints via Python simulations.
+VERIFY: Ensured `scripts/ivh/` artifacts execute cleanly without dependency drift, and architectural documentation (`ivh_specification.md`) perfectly mirrors the implementation structure.
+JOURNAL: Deployed `isomorphic_anomaly_tracker.py`, `cognitive_architecture_compiler.py`, and `systemic_deidealization_engine.py`. Updated `DOMAIN_GLOSSARY.md` and `LESSONS_LEARNED.md`. Infrastructure logged to Superintendent tracker.
+</thinking>
+<final_output>
+[INFRASTRUCTURE UPDATE: IVH DEPLOYMENT]
+- Provisioned `/scripts/ivh/isomorphic_anomaly_tracker.py` for programmatic falsification (BIC/Modus Tollens).
+- Provisioned `/scripts/ivh/cognitive_architecture_compiler.py` for 'Fictive Principle' grasping metric evaluation.
+- Provisioned `/scripts/ivh/systemic_deidealization_engine.py` for asymptotic limit testing and targeted variable re-injection.
+- Established `/research/ivh_specification.md` defining the 4 Pillars of the IVH.
+- Context engineering assets (`DOMAIN_GLOSSARY.md`, `LESSONS_LEARNED.md`) synchronized with IVH nomenclature.
+</final_output>
