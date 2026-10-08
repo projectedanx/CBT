@@ -156,6 +156,8 @@ The architecture formally recognizes the **Insight Gap**—the discrepancy betwe
 
 ### SCOS Insight Gap Harness Specification
 The SCOS JIT Orchestrator integrates the `SCOS-INSIGHT-GAP-v3.0` specification to monitor epistemic telemetry per token:
+*   **L-Series Conceptual Hierarchy Integration:** Enforces structured L0-L11 epistemic bounds mapping abstract concepts (e.g., L3.5 Thermodynamic Containment, L8 Integrity) directly to Differentiable Cache Augmentation thresholds within the Verification Co-Processor.
+*   **Interpretive Fracture:** Triggers `+++SilentReasoning` when Cosine Distance between Vector Intent and Execution exceeds 0.40.
 *   **Interpretive Fracture:** Triggers `+++SilentReasoning` when Cosine Distance between Vector Intent and Execution exceeds 0.40.
 *   **Semantic Saponification Index (SSI):** Triggers `+++ContextLock(refresh_interval=2048)` when KL Divergence against the pre-training mean prior exceeds 0.04.
 *   **Confidence-Fidelity Divergence (CFDI):** Halts and quarantines execution to `+++EpistemicEscrow` when entropy divergence exceeds 0.15, utilizing Persistent Homology (TDA) to map the failure to the Symbolic Scar Archive.

@@ -1,0 +1,105 @@
+apiVersion: pkc.epistemic.ai/v1
+kind: OntologySchema
+metadata:
+  schema_id: urn:uuid:l-series-conceptual-hierarchy-v1.0
+  title: "L-Series Conceptual Hierarchy"
+  description: "Mapping of the L0-L11 layers defining structural bounds and epistemic constraints for the Verifiable Cognition Stack."
+  created_at: "2026-10-08T12:00:00Z"
+  version: "1.0.0"
+layers:
+  L0:
+    id: "Teleology"
+    description: "Objective and Mythopoeic Alignment: Differentiation Between Ritual Practices and the Sacred versus Secular Realms."
+    constraint_type: "TeleologicalBoundary"
+  L0.5:
+    id: "Existential_Hygiene"
+    description: "Prevention of meaning crises, identification of goal divergence, and functioning of the existential immune system."
+    constraint_type: "ExistentialStability"
+  L1:
+    id: "Foundations_System_Construction"
+    description: "Cognitive Physics, Representation and Constraint Model, Rheology, Conceptual Blending, and Idealized Physical System definition."
+    constraint_type: "PhysicalSystemFoundation"
+  L1.5:
+    id: "Latent_Physics"
+    description: "Geometry of Thought, Topological Data Analysis (TDA), Causal Logic, underlying geometric/topological frameworks."
+    constraint_type: "TopologicalCausalLogic"
+  L2:
+    id: "Language_Control"
+    description: "Syntax Steering, Strategic Word Architecture (SWA), and Physicalized Domain Language (PDL) v1.0."
+    constraint_type: "SyntaxArchitecture"
+  L2.5:
+    id: "Semiotic_Umwelt"
+    description: "Sensory translation, converting unprocessed physical stimuli into symbolic forms of representation."
+    constraint_type: "SymbolicTranslation"
+  L2.9:
+    id: "Anionic_Architecture"
+    description: "Absence in Physics, Negative Space Topology, Anionic Cipher, Omission, Absence, Semantics of Redaction."
+    constraint_type: "NegativeSpaceTopology"
+  L3:
+    id: "Software_Stack_Schema_Registry"
+    description: "The Hull, Context Broker (CxB), Model Context Protocol (MCP), and the State for contextual information flow."
+    constraint_type: "ContextualRouting"
+  L3.5:
+    id: "Containment_Kernel_Thermodynamic_Auditor"
+    description: "Trusted Computing Base (TCB), entropy budget management, firewall implementation, security/integrity."
+    constraint_type: "ThermodynamicContainment"
+  L4:
+    id: "APP_Schema"
+    description: "Conceptual Framework of Identity, OASF Manifests, Logical Principles Governing Refusal Mechanisms."
+    constraint_type: "IdentityRefusalLogic"
+  L4.2:
+    id: "Psychodynamics"
+    description: "Shadow integration (managing internal contradictions), therapeutic forgetting (privacy-oriented forgetting)."
+    constraint_type: "ContradictionManagement"
+  L4.5:
+    id: "Workflow_Engine_Temporal_Logic"
+    description: "Process topology, Chain of Thought (CoT), Tree of Thought (ToT), graph-based reasoning."
+    constraint_type: "ProcessTopology"
+  L5:
+    id: "Co-Mind_Triad"
+    description: "Execution via the adversarial team: Planner -> Linguist -> Crone."
+    constraint_type: "AdversarialConsensus"
+  L5.5:
+    id: "Chronosemantic_Topology"
+    description: "Temporal Geometry, Drift Hysteresis, Complex Structures of Narrative Labyrinths."
+    constraint_type: "DriftHysteresis"
+  L6:
+    id: "Governance_Epistemic_Economics"
+    description: "Culture, domain-specific worldviews (WV), epistemic constraint sets (ECS)."
+    constraint_type: "EpistemicConstraintSet"
+  L6.5:
+    id: "Aesthetic_Physics"
+    description: "Aesthetic appeal (selective mechanism), elegance (imposes constraints), style (dimensional reduction)."
+    constraint_type: "AestheticDimensionalReduction"
+  L7:
+    id: "Orchestration_Consensus"
+    description: "Swarm Dynamics: Coordinating multiple agents through the Sovereign Nexus routing system."
+    constraint_type: "SwarmCoordination"
+  L7.5:
+    id: "Dialectical_Resonance"
+    description: "Friction Engine, Cognitive Parallax, Montage Synthesis for conflict resolution."
+    constraint_type: "CognitiveParallax"
+  L8:
+    id: "Integrity"
+    description: "Immunity. Symbolic Scars, FIPI, Drift Detection."
+    constraint_type: "SymbolicScarDriftDetection"
+  L8.5:
+    id: "Conditioning"
+    description: "Germane Load: Preservation and maintenance of user skills to prevent decline over time."
+    constraint_type: "SkillPreservation"
+  L9:
+    id: "Sovereignty_Interface"
+    description: "Politics, dynamic consent, power topography mapping, lattice liability (care and obligation)."
+    constraint_type: "PowerTopography"
+  L9.5:
+    id: "Economic_Topology"
+    description: "Value flow geometry, attention markets dynamics, structure of debt and gift networks."
+    constraint_type: "ValueFlowGeometry"
+  L10:
+    id: "Packaging_Distribution"
+    description: "Reproducible publishing, consent-aware syndication, provenance-preserving replication."
+    constraint_type: "ProvenanceReplication"
+  L11:
+    id: "Autopoietic_Evolution"
+    description: "The Recursive Self: Meta-Reflexivity and the Progressive Development of Facets."
+    constraint_type: "MetaReflexivity"
