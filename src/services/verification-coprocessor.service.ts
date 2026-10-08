@@ -22,11 +22,14 @@ export class VerificationCoprocessorService {
   private repairLoop = inject(ReflexiveRepairLoopService);
 
   /** Operational parameters for the REFLX_IDE Harness */
-  private readonly HARNESS_PARAMS: ReflxIdeHarnessParams = {
+  private readonly HARNESS_PARAMS: ReflxIdeHarnessParams & { lSeriesActive: boolean; l8IntegrityThreshold: number; l3_5ContainmentBoundary: number; } = {
     cfdiThreshold: 0.42,
     driftThresholdXi: 0.30,
     couplingGainBeta: 0.75, // Dynamic scaling placeholder
-    targetMRS: 0.80
+    targetMRS: 0.80,
+    lSeriesActive: true,
+    l8IntegrityThreshold: 0.25,
+    l3_5ContainmentBoundary: 0.95
   };
 
   /** History of remediation transactions for auditability */
@@ -73,13 +76,27 @@ export class VerificationCoprocessorService {
    */
   public auditState(sdc: number): VCPDiagnosticMetrics {
       // Stub: Deep topological analysis (Persistent Homology)
-      const isCritical = sdc > 0.4;
+      // L8 Integrity Constraints (Stricter bounds)
+      let effectiveSdc = sdc;
+      if (this.HARNESS_PARAMS.lSeriesActive && sdc > this.HARNESS_PARAMS.l8IntegrityThreshold) {
+          console.warn(`[VCP] L8 Integrity Boundary breached. Scaling SDC for escrow potential.`);
+          effectiveSdc *= 1.25; // Artificial scaling for violation
+      }
+
+      const isCritical = effectiveSdc > this.HARNESS_PARAMS.driftThresholdXi;
+
+      // L3.5 Thermodynamic Containment (Firewall check)
+      let l35Breach = false;
+      if (this.HARNESS_PARAMS.lSeriesActive && effectiveSdc > this.HARNESS_PARAMS.l3_5ContainmentBoundary) {
+          console.error(`[VCP] L3.5 Thermodynamic Containment Kernel breached! Entropy budget exceeded.`);
+          l35Breach = true;
+      }
 
       const metrics: VCPDiagnosticMetrics = {
           betti0: 1, // Connected components
-          betti1: isCritical ? (Math.random() > 0.8 ? 1 : 0) : 0, // Homological loops
-          sdc: sdc,
-          cfdi: isCritical ? sdc + (Math.random() * 0.2) : sdc * 0.5
+          betti1: isCritical || l35Breach ? (Math.random() > 0.8 || l35Breach ? 1 : 0) : 0, // Homological loops, forced on L3.5 breach
+          sdc: effectiveSdc,
+          cfdi: isCritical ? effectiveSdc + (Math.random() * 0.2) : effectiveSdc * 0.5
       };
 
       console.log(`[VCP] Topological Audit complete. CFDI: ${metrics.cfdi.toFixed(3)}, Betti-1: ${metrics.betti1}`);

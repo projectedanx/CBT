@@ -80,6 +80,26 @@ content_nodes:
   status: curated
   title: DAX-01 Epistemic Capsule
   version_number: 1
+- content_path: pkm/L_Series_Conceptual_Hierarchy_v1.0.yaml
+  epistemic_tag: stable
+  meaning_space_anchor:
+    embedding_model: text-embedding-3-small
+    hyperspherical_radius: 0.05
+    prototypical_vector:
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+  metadata_fields:
+    architectural_layer: Cognitive_Core
+    epistemic_risk_level: Low
+    implementation_horizon: Production_Ready
+  node_type: YAML
+  node_uuid: urn:uuid:l-series-conceptual-hierarchy-v1.0
+  status: curated
+  title: L-Series Conceptual Hierarchy
+  version_number: 1
 kind: PersonalKnowledgeCorpus
 metadata:
   active_ontology_references:
@@ -90,6 +110,7 @@ metadata:
   - pkm/algorithmic_kintsugi.md:sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
   - docs/adr/20-actplane-hierarchical-policy-domains.md:sha256-bcfea3e84752ca13bc68aafc787735f251e6bc8786467256c2e5c014beeffec9
   - docs/adr/29-dax-01-epistemic-capsule.md:sha256-60b5f57d52e9bd224b9bd8ba5d4020b8d0de987e27884a9224a7048f5946eefc
+  - pkm/L_Series_Conceptual_Hierarchy_v1.0.yaml:sha256-bcbac2deeff258b26fd0b0fd1f466ee8d5a4f315cf56d475378ecf940c413c61
   corpus_uuid: urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6
   created_at: '2026-08-27T06:56:58Z'
   last_anchored_commit: commit_sha256_9f83a2b100e451b6239167c...

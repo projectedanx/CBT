@@ -1,0 +1,122 @@
+{
+  "L0": {
+    "constraint_id": "TeleologicalBoundary",
+    "description": "Objective and Mythopoeic Alignment: Differentiation Between Ritual Practices and the Sacred versus Secular Realms.",
+    "active": true
+  },
+  "L0.5": {
+    "constraint_id": "ExistentialStability",
+    "description": "Prevention of meaning crises, identification of goal divergence, and functioning of the existential immune system.",
+    "active": true
+  },
+  "L1": {
+    "constraint_id": "PhysicalSystemFoundation",
+    "description": "Cognitive Physics, Representation and Constraint Model, Rheology, Conceptual Blending, and Idealized Physical System definition.",
+    "active": true
+  },
+  "L1.5": {
+    "constraint_id": "TopologicalCausalLogic",
+    "description": "Geometry of Thought, Topological Data Analysis (TDA), Causal Logic, underlying geometric/topological frameworks.",
+    "active": true
+  },
+  "L2": {
+    "constraint_id": "SyntaxArchitecture",
+    "description": "Syntax Steering, Strategic Word Architecture (SWA), and Physicalized Domain Language (PDL) v1.0.",
+    "active": true
+  },
+  "L2.5": {
+    "constraint_id": "SymbolicTranslation",
+    "description": "Sensory translation, converting unprocessed physical stimuli into symbolic forms of representation.",
+    "active": true
+  },
+  "L2.9": {
+    "constraint_id": "NegativeSpaceTopology",
+    "description": "Absence in Physics, Negative Space Topology, Anionic Cipher, Omission, Absence, Semantics of Redaction.",
+    "active": true
+  },
+  "L3": {
+    "constraint_id": "ContextualRouting",
+    "description": "The Hull, Context Broker (CxB), Model Context Protocol (MCP), and the State for contextual information flow.",
+    "active": true
+  },
+  "L3.5": {
+    "constraint_id": "ThermodynamicContainment",
+    "description": "Trusted Computing Base (TCB), entropy budget management, firewall implementation, security/integrity.",
+    "active": true
+  },
+  "L4": {
+    "constraint_id": "IdentityRefusalLogic",
+    "description": "Conceptual Framework of Identity, OASF Manifests, Logical Principles Governing Refusal Mechanisms.",
+    "active": true
+  },
+  "L4.2": {
+    "constraint_id": "ContradictionManagement",
+    "description": "Shadow integration (managing internal contradictions), therapeutic forgetting (privacy-oriented forgetting).",
+    "active": true
+  },
+  "L4.5": {
+    "constraint_id": "ProcessTopology",
+    "description": "Process topology, Chain of Thought (CoT), Tree of Thought (ToT), graph-based reasoning.",
+    "active": true
+  },
+  "L5": {
+    "constraint_id": "AdversarialConsensus",
+    "description": "Execution via the adversarial team: Planner -> Linguist -> Crone.",
+    "active": true
+  },
+  "L5.5": {
+    "constraint_id": "DriftHysteresis",
+    "description": "Temporal Geometry, Drift Hysteresis, Complex Structures of Narrative Labyrinths.",
+    "active": true
+  },
+  "L6": {
+    "constraint_id": "EpistemicConstraintSet",
+    "description": "Culture, domain-specific worldviews (WV), epistemic constraint sets (ECS).",
+    "active": true
+  },
+  "L6.5": {
+    "constraint_id": "AestheticDimensionalReduction",
+    "description": "Aesthetic appeal (selective mechanism), elegance (imposes constraints), style (dimensional reduction).",
+    "active": true
+  },
+  "L7": {
+    "constraint_id": "SwarmCoordination",
+    "description": "Swarm Dynamics: Coordinating multiple agents through the Sovereign Nexus routing system.",
+    "active": true
+  },
+  "L7.5": {
+    "constraint_id": "CognitiveParallax",
+    "description": "Friction Engine, Cognitive Parallax, Montage Synthesis for conflict resolution.",
+    "active": true
+  },
+  "L8": {
+    "constraint_id": "SymbolicScarDriftDetection",
+    "description": "Immunity. Symbolic Scars, FIPI, Drift Detection.",
+    "active": true
+  },
+  "L8.5": {
+    "constraint_id": "SkillPreservation",
+    "description": "Germane Load: Preservation and maintenance of user skills to prevent decline over time.",
+    "active": true
+  },
+  "L9": {
+    "constraint_id": "PowerTopography",
+    "description": "Politics, dynamic consent, power topography mapping, lattice liability (care and obligation).",
+    "active": true
+  },
+  "L9.5": {
+    "constraint_id": "ValueFlowGeometry",
+    "description": "Value flow geometry, attention markets dynamics, structure of debt and gift networks.",
+    "active": true
+  },
+  "L10": {
+    "constraint_id": "ProvenanceReplication",
+    "description": "Reproducible publishing, consent-aware syndication, provenance-preserving replication.",
+    "active": true
+  },
+  "L11": {
+    "constraint_id": "MetaReflexivity",
+    "description": "The Recursive Self: Meta-Reflexivity and the Progressive Development of Facets.",
+    "active": true
+  }
+}
